@@ -1,5 +1,3 @@
-export default function Button() {
-    return (
-        <>Button</>
-    )
-};
+export default function Button(): JSX.Element {
+  return <>Button</>;
+}

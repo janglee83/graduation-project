@@ -1,5 +1,3 @@
-export default function CheckBox() {
-    return (
-        <>hello</>
-    )
-};
+export default function CheckBox(): JSX.Element {
+  return <>hello</>;
+}
