@@ -1,11 +1,30 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import Vue from '@vitejs/plugin-vue';
+import path from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    Vue({
+      template: {
+        transformAssetUrls: {
+          base: null,
+          includeAbsolute: false,
+        },
+      },
+    }),
+  ],
   server: {
+    host: true,
     port: 3000,
-    open: true // Automatically open the default browser when starting the server
-  }
-})
+    open: true,
+    hmr: {
+      host: 'localhost',
+    },
+  },
+  resolve: {
+    extensions: ['.vue', '.ts', '.js'],
+    alias: {
+      '@': path.join(__dirname, '/src'),
+    },
+  },
+});
