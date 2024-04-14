@@ -1,7 +1,9 @@
-<script lang="ts" setup>
-import AppMenu from './AppMenu.vue';
+<script setup lang="ts">
+    import AppMenu from './AppMenu.vue';
 </script>
 
 <template>
-    <AppMenu />
+    <app-menu></app-menu>
 </template>
+
+<style lang="scss" scoped></style>

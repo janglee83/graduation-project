@@ -1,35 +1,35 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+    import { ref } from 'vue';
 
-const customEvents = ref([
-    {
-        status: 'Ordered',
-        date: '15/10/2020 10:30',
-        icon: 'pi pi-shopping-cart',
-        color: '#9C27B0',
-        image: 'game-controller.jpg'
-    },
-    {
-        status: 'Processing',
-        date: '15/10/2020 14:00',
-        icon: 'pi pi-cog',
-        color: '#673AB7'
-    },
-    {
-        status: 'Shipped',
-        date: '15/10/2020 16:15',
-        icon: 'pi pi-envelope',
-        color: '#FF9800'
-    },
-    {
-        status: 'Delivered',
-        date: '16/10/2020 10:00',
-        icon: 'pi pi-check',
-        color: '#607D8B'
-    }
-]);
+    const customEvents = ref([
+        {
+            status: 'Ordered',
+            date: '15/10/2020 10:30',
+            icon: 'pi pi-shopping-cart',
+            color: '#9C27B0',
+            image: 'game-controller.jpg',
+        },
+        {
+            status: 'Processing',
+            date: '15/10/2020 14:00',
+            icon: 'pi pi-cog',
+            color: '#673AB7',
+        },
+        {
+            status: 'Shipped',
+            date: '15/10/2020 16:15',
+            icon: 'pi pi-envelope',
+            color: '#FF9800',
+        },
+        {
+            status: 'Delivered',
+            date: '16/10/2020 10:00',
+            icon: 'pi pi-check',
+            color: '#607D8B',
+        },
+    ]);
 
-const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
+    const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
 </script>
 
 <template>
@@ -47,7 +47,9 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
         <div class="col-6">
             <div class="card">
                 <h5>Right Align</h5>
-                <Timeline :value="customEvents" align="right">
+                <Timeline
+                    :value="customEvents"
+                    align="right">
                     <template #content="slotProps">
                         {{ slotProps.item.status }}
                     </template>
@@ -57,7 +59,9 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
         <div class="col-6">
             <div class="card">
                 <h5>Alternate Align</h5>
-                <Timeline :value="customEvents" align="alternate">
+                <Timeline
+                    :value="customEvents"
+                    align="alternate">
                     <template #content="slotProps">
                         {{ slotProps.item.status }}
                     </template>
@@ -80,9 +84,14 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
     </div>
     <div class="card">
         <h5>Custom Timeline</h5>
-        <Timeline :value="customEvents" align="alternate" class="customized-timeline">
+        <Timeline
+            :value="customEvents"
+            align="alternate"
+            class="customized-timeline">
             <template #marker="slotProps">
-                <span class="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-2" :style="{ backgroundColor: slotProps.item.color }">
+                <span
+                    class="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-2"
+                    :style="{ backgroundColor: slotProps.item.color }">
                     <i :class="slotProps.item.icon"></i>
                 </span>
             </template>
@@ -95,12 +104,19 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
                         {{ slotProps.item.date }}
                     </template>
                     <template #content>
-                        <img v-if="slotProps.item.image" :src="'/demo/images/product/' + slotProps.item.image" :alt="slotProps.item.name" width="200" class="shadow-2 mb-3" />
+                        <img
+                            v-if="slotProps.item.image"
+                            :src="'/demo/images/product/' + slotProps.item.image"
+                            :alt="slotProps.item.name"
+                            width="200"
+                            class="shadow-2 mb-3" />
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
-                            neque quas!
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
+                            quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
                         </p>
-                        <Button label="Read more" class="p-button-text"></Button>
+                        <Button
+                            label="Read more"
+                            class="p-button-text"></Button>
                     </template>
                 </Card>
             </template>
@@ -109,21 +125,30 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
     <div class="card mt-3">
         <h5>Horizontal</h5>
         <h6>Top Align</h6>
-        <Timeline :value="horizontalEvents" layout="horizontal" align="top">
+        <Timeline
+            :value="horizontalEvents"
+            layout="horizontal"
+            align="top">
             <template #content="slotProps">
                 {{ slotProps.item }}
             </template>
         </Timeline>
 
         <h6>Bottom Align</h6>
-        <Timeline :value="horizontalEvents" layout="horizontal" align="bottom">
+        <Timeline
+            :value="horizontalEvents"
+            layout="horizontal"
+            align="bottom">
             <template #content="slotProps">
                 {{ slotProps.item }}
             </template>
         </Timeline>
 
         <h6>Alternate Align</h6>
-        <Timeline :value="horizontalEvents" layout="horizontal" align="alternate">
+        <Timeline
+            :value="horizontalEvents"
+            layout="horizontal"
+            align="alternate">
             <template #opposite> &nbsp; </template>
             <template #content="slotProps">
                 {{ slotProps.item }}
@@ -133,23 +158,23 @@ const horizontalEvents = ref(['2020', '2021', '2022', '2023']);
 </template>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 960px) {
-    ::v-deep(.customized-timeline) {
-        .p-timeline-event:nth-child(even) {
-            flex-direction: row !important;
+    @media screen and (max-width: 960px) {
+        ::v-deep(.customized-timeline) {
+            .p-timeline-event:nth-child(even) {
+                flex-direction: row !important;
 
-            .p-timeline-event-content {
-                text-align: left !important;
+                .p-timeline-event-content {
+                    text-align: left !important;
+                }
+            }
+
+            .p-timeline-event-opposite {
+                flex: 0;
+            }
+
+            .p-card {
+                margin-top: 1rem;
             }
         }
-
-        .p-timeline-event-opposite {
-            flex: 0;
-        }
-
-        .p-card {
-            margin-top: 1rem;
-        }
     }
-}
 </style>

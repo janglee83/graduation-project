@@ -1,16 +1,6 @@
 import { toRefs, reactive, computed } from 'vue';
 
-interface LayoutConfigInterface {
-    ripple: boolean;
-    darkTheme: boolean;
-    inputStyle: string;
-    menuMode: string;
-    theme: string
-    scale: number;
-    activeMenuItem: any
-}
-
-const layoutConfig = reactive<LayoutConfigInterface>({
+const layoutConfig = reactive({
     ripple: true,
     darkTheme: false,
     inputStyle: 'outlined',
@@ -20,16 +10,7 @@ const layoutConfig = reactive<LayoutConfigInterface>({
     activeMenuItem: null
 });
 
-interface LayoutStateInterface {
-    staticMenuDesktopInactive: boolean;
-    overlayMenuActive: boolean;
-    profileSidebarVisible: boolean;
-    configSidebarVisible: boolean;
-    staticMenuMobileActive: boolean;
-    menuHoverActive: boolean;
-}
-
-const layoutState = reactive<LayoutStateInterface>({
+const layoutState = reactive({
     staticMenuDesktopInactive: false,
     overlayMenuActive: false,
     profileSidebarVisible: false,
@@ -39,11 +20,11 @@ const layoutState = reactive<LayoutStateInterface>({
 });
 
 export function useLayout() {
-    const setScale = (scale: number) => {
+    const setScale = (scale) => {
         layoutConfig.scale = scale;
     };
 
-    const setActiveMenuItem = (item: any) => {
+    const setActiveMenuItem = (item) => {
         layoutConfig.activeMenuItem = item.value || item;
     };
 
