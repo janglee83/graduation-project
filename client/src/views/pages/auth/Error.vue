@@ -1,6 +1,4 @@
-<script setup lang="ts">
-    import AppConfig from '@/layout/AppConfig.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <div class="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
@@ -46,5 +44,4 @@
             </div>
         </div>
     </div>
-    <AppConfig simple />
 </template>

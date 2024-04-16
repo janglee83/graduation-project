@@ -1,11 +1,10 @@
 <script setup lang="ts">
-  import { useLayout } from '@/layout/composables/layout';
   import { ref, computed } from 'vue';
-  import AppConfig from '@/layout/AppConfig.vue';
   import Checkbox from 'primevue/checkbox';
   import Password from 'primevue/password';
   import InputText from 'primevue/inputtext';
   import Button from 'primevue/button';
+  import { useLayout } from '../../../layout/composables/layout';
 
   const { layoutConfig } = useLayout();
   const email = ref('');
@@ -76,7 +75,6 @@
       </div>
     </div>
   </div>
-  <AppConfig simple />
 </template>
 
 <style scoped>

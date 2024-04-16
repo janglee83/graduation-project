@@ -1,7 +1,6 @@
 <script setup lang="ts">
-  import { useLayout } from '@/layout/composables/layout';
+  import { useLayout } from '../../layout/composables/layout';
   import { computed } from 'vue';
-  import AppConfig from '@/layout/AppConfig.vue';
   import Divider from 'primevue/divider';
   import Button from 'primevue/button';
 
@@ -648,7 +647,6 @@
       </div>
     </div>
   </div>
-  <AppConfig simple />
 </template>
 
 <!-- <style scoped>
