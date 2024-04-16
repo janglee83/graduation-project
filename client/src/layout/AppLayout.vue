@@ -3,8 +3,7 @@
   import AppTopbar from './AppTopbar.vue';
   import AppFooter from './AppFooter.vue';
   import AppSidebar from './AppSidebar.vue';
-  import AppConfig from './AppConfig.vue';
-  import { useLayout } from '@/layout/composables/layout';
+  import { useLayout } from './composables/layout';
   import Toast from 'primevue/toast';
 
   const { layoutConfig, layoutState, isSidebarActive } = useLayout();
@@ -75,7 +74,6 @@
       </div>
       <app-footer></app-footer>
     </div>
-    <app-config></app-config>
     <div class="layout-mask"></div>
   </div>
   <Toast />

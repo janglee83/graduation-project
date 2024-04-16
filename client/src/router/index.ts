@@ -14,6 +14,11 @@ const router = createRouter({
                     component: () => import('@/views/Dashboard.vue')
                 },
                 {
+                    path: '/input-param',
+                    name: 'inputParamInfo',
+                    component: () => import('../views/pages/InputParamInfo/index.vue')
+                },
+                {
                     path: '/uikit/formlayout',
                     name: 'formlayout',
                     component: () => import('@/views/uikit/FormLayout.vue')
