@@ -1,6 +1,9 @@
 from typing import List
 from requests import KpiConditionRequest
-from torch import zeros, int32, Tensor
+from torch import zeros, int32, Tensor, tensor, ones, pow, ones_like, zeros_like
+from models import HarmonySearch, AntColony
+from helpers import START_POINT_NAME, FINISH_POINT_NAME
+from models import ObjectHarmonySearch
 
 
 class DataService:
@@ -23,3 +26,23 @@ class DataService:
                 matrix[index_kpi_col, next_point_index] = 1
 
         return matrix
+
+    def build_harmony_search_candidate(harmony_search: HarmonySearch, relationship_kpi_matrix: Tensor, ant_colony: AntColony) -> List:
+        candidates: List = list()
+        for row in range(relationship_kpi_matrix.size(0)):
+            for col in range(relationship_kpi_matrix.size(1)):
+                if relationship_kpi_matrix[row, col] > 0 and col != harmony_search.objective_harmony_search.number_parameters + 1:
+                    harmony_memory = harmony_search.initialize_harmony_memory()
+                    harmony_pheromone_candidate_value = ones_like(
+                        harmony_memory)
+
+                    payload = {
+                        'from': START_POINT_NAME if row == 0 else FINISH_POINT_NAME if row == harmony_search.objective_harmony_search.number_parameters + 1 else str(row),
+                        'to': START_POINT_NAME if col == 0 else FINISH_POINT_NAME if col == harmony_search.objective_harmony_search.number_parameters + 1 else str(col),
+                        'harmony_memory': harmony_memory,
+                        'harmony_pheromone_candidate_value': harmony_pheromone_candidate_value,
+                    }
+
+                    candidates.append(payload)
+
+        return candidates
