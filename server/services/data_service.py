@@ -1,13 +1,23 @@
 from typing import List
-from requests import KpiConditionRequest
-from torch import zeros, int32, Tensor, tensor, ones, pow, ones_like, zeros_like
-from models import HarmonySearch, AntColony
-from helpers import START_POINT_NAME, FINISH_POINT_NAME
-from models import ObjectHarmonySearch
+from requests import KpiConditionRequest, KpiRequest, Employees
+from torch import zeros, int32, Tensor, tensor, stack
+from models import HarmonySearch
+# from helpers import START_POINT_NAME, FINISH_POINT_NAME
+# from models import ObjectHarmonySearch
+# from services.truncated_normal_service import TruncatedNormalService
 
 
 class DataService:
     def build_kpi_relationship_matrix(kpiConditions: List[KpiConditionRequest]) -> Tensor:
+        """
+        Build a KPI relationship matrix base post condition of each kpi.
+
+        Args:
+            kpiConditions (List[KpiConditionRequest]): List of KPI condition requests including kpi_id and its post condition.
+
+        Returns:
+            Tensor: The KPI relationship matrix.
+        """
         matrix_size = len(kpiConditions) + 2
         matrix = zeros(matrix_size, matrix_size, dtype=int32)
 
@@ -27,22 +37,33 @@ class DataService:
 
         return matrix
 
-    def build_harmony_search_candidate(harmony_search: HarmonySearch, relationship_kpi_matrix: Tensor, ant_colony: AntColony) -> List:
-        candidates: List = list()
-        for row in range(relationship_kpi_matrix.size(0)):
-            for col in range(relationship_kpi_matrix.size(1)):
-                if relationship_kpi_matrix[row, col] > 0 and col != harmony_search.objective_harmony_search.number_parameters + 1:
-                    harmony_memory = harmony_search.initialize_harmony_memory()
-                    harmony_pheromone_candidate_value = ones_like(
-                        harmony_memory)
+    def build_lower_upper_matrix(listKpis: List[KpiRequest]) -> Tensor:
+        """
+        Build a lower_upper_matrix base lower and upper bound's value of each kpi.add()
 
-                    payload = {
-                        'from': START_POINT_NAME if row == 0 else FINISH_POINT_NAME if row == harmony_search.objective_harmony_search.number_parameters + 1 else str(row),
-                        'to': START_POINT_NAME if col == 0 else FINISH_POINT_NAME if col == harmony_search.objective_harmony_search.number_parameters + 1 else str(col),
-                        'harmony_memory': harmony_memory,
-                        'harmony_pheromone_candidate_value': harmony_pheromone_candidate_value,
-                    }
+        Args:
+            listKpis (List[KpiRequest]): List of Kpi's detail
 
-                    candidates.append(payload)
+        Returns:
+            Tensor: lower_upper_matrix
+        """
+        return tensor(list(map(lambda kpi: [kpi.lower_bound, kpi.upper_bound], listKpis)))
 
-        return candidates
+    def build_executive_staff_matrix(listKpis: List[KpiRequest], listEmployees: List[Employees]) -> Tensor:
+        matrix = zeros(len(listEmployees), len(listKpis))
+
+        for index, kpi in enumerate(listKpis):
+            if kpi.executive_staff[0] == 'all':
+                matrix[:, index] = 1
+            else:
+                for staff in kpi.executive_staff:
+                    index_row = int(staff) - 1
+                    matrix[index_row, index] = 1
+
+        return matrix
+
+    def build_hs_memory_candidate(harmony_search: HarmonySearch, lower_upper_matrix: Tensor, executive_staff_matrix: Tensor) -> List:
+        object_hs = harmony_search.objective_harmony_search
+        list_candidate = list(map(lambda _: harmony_search.initialize_harmony_memory(
+            lower_upper_matrix, executive_staff_matrix), range(object_hs.hms)))
+        return stack(list_candidate)

@@ -1,6 +1,6 @@
-from torch import Tensor, tensor, zeros
+from torch import Tensor, zeros
 from models import HarmonySearch
-from random import random, randint
+from random import random
 from services import TruncatedNormalService
 
 
@@ -8,62 +8,39 @@ class HarmonyService(object):
     def __init__(self):
         pass
 
-    def run_algorithm(self, path_solution_candidates: Tensor, harmony_search: HarmonySearch):
+    def run_algorithm(self, harmony_search: HarmonySearch, lower_upper_matrix: Tensor):
         truncatedNS = TruncatedNormalService()
+        object_hs = harmony_search.objective_harmony_search
+        row_len = len(
+            harmony_search.objective_harmony_search.human_score_vector)
+        col_len = len(harmony_search.objective_harmony_search.kpi_weight)
 
-        for index, path in enumerate(path_solution_candidates):
-            harmony_search.set_harmony_memory(path['harmony_memory'])
-
-            object_hs = harmony_search.objective_harmony_search
-
+        while True:
             # generate new harmony from each layer
-            for depth in range(object_hs.depth_value):
-                while True:
-                    harmony: list = list()
-                    for col in range(object_hs.number_parameters):
-                        if random() < object_hs.hmcr:
-                            harmony_search.memory_consideration(
-                                harmony, col, depth)
+            harmony = zeros(row_len, col_len)
+            for row in range(row_len):
+                for col in range(col_len):
+                    # set bound
+                    bound = lower_upper_matrix[col]
+                    object_hs.set_lower_bound(bound[0])
+                    object_hs.set_upper_bound(bound[1])
 
-                            if random() < object_hs.par:
-                                harmony_search.pitch_adjustment(
-                                    harmony=harmony, col=col)
-                        else:
-                            harmony_search.random_selection(harmony=harmony)
+                    # add condition if that employee can not do that kpi
+                    if random() < object_hs.hmcr or harmony_search.harmony_memory[1, row, col] == 0:
+                        harmony_search.memory_consideration(
+                            harmony=harmony, row=row, col=col)
 
-                    tensor_harmony = tensor(harmony)
-                    fitness = object_hs.get_fitness(tensor_harmony)
+                        if random() < object_hs.par and harmony_search.harmony_memory[1, row, col] != 0:
+                            harmony_search.pitch_adjustment(
+                                harmony=harmony, row=row, col=col, lower_bound=bound[0], upper_bound=bound[1])
 
-                    if truncatedNS.is_truncated_normal(tensor_harmony) and fitness >= 0:
-                        break
+                    else:
+                        harmony_search.random_selection(
+                            harmony=harmony, row=row, col=col)
 
-                harmony_search.update_harmony_memory(
-                    tensor_harmony, fitness, path_solution_candidates, index, depth)
+            fitness = object_hs.get_fitness(harmony=harmony)
+            if truncatedNS.is_truncated_normal(harmony) and fitness >= 0:
+                break
 
-            # generate new layer from layers
-            new_layer = zeros(object_hs.hms, object_hs.number_parameters)
-
-            for row in range(object_hs.hms):
-                while True:
-                    harmony: list = list()
-                    for col in range(0, object_hs.number_parameters):
-                        if random() < object_hs.hmcr:
-                            harmony_search.memory_consideration(
-                                harmony, col, depth)
-
-                            if random() < object_hs.par:
-                                harmony_search.pitch_adjustment(
-                                    harmony=harmony, col=col)
-                        else:
-                            harmony_search.random_selection(harmony=harmony)
-
-                        tensor_harmony = tensor(harmony)
-                        fitness = object_hs.get_fitness(tensor_harmony)
-
-                    if truncatedNS.is_truncated_normal(tensor_harmony) and fitness >= 0:
-                        break
-
-                new_layer[row] = tensor(harmony)
-
-            harmony_search.update_harmony_base_layer(
-                new_layer, path_solution_candidates, index)
+        harmony_search.update_harmony_memory(
+            considered_harmony=harmony, considered_fitness=fitness)
