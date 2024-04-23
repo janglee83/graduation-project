@@ -20,8 +20,8 @@ class ObjectHarmonySearch(BaseModel):
     kpi_weight: Any
 
     def __init__(self, number_parameters: int, human_score_vector: Any, kpi_weight: Any, is_maximize: bool = False, max_improvisations: int = 2, hms: int = 2, hmcr: float = 0.75, par: float = 0.5, bw: float = 0.5, depth_value: int = 2, lower_bound: float = None, upper_bound: float = None):
-        max_improvisations = 5000
-        hms = 50
+        max_improvisations = 1
+        hms = 2
         hmcr = float(getenv('HARMONY_SEARCH_HMCR'))
         par = float(getenv('HARMONY_SEARCH_PAR'))
         bw = float(getenv('HARMONY_SEARCH_BW'))

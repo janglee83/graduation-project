@@ -11,6 +11,7 @@ class KpiRequest(BaseModel):
     executive_staff: List[str] | str
     lower_bound: float
     upper_bound: float
+    weight: float
 
     # Task weight matrix where the total weight of all items in a row sums up to 1.
     # If an item's weight is 0, it means that the corresponding task cannot be done by the given kpi_id.
@@ -65,6 +66,10 @@ class KpiRequest(BaseModel):
             raise ValueError('task_weight cannot contain negative values')
 
         return v
+
+    @field_validator('weight')
+    def check_float_weight(cls, value):
+        return check_float_helper(value=value, error_message='Upper bound must be float')
 
 
 class KpiConditionRequest(BaseModel):

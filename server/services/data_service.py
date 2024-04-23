@@ -50,6 +50,16 @@ class DataService:
         return tensor(list(map(lambda kpi: [kpi.lower_bound, kpi.upper_bound], listKpis)))
 
     def build_executive_staff_matrix(listKpis: List[KpiRequest], listEmployees: List[Employees]) -> Tensor:
+        """
+        Build executive staff matrix, col is kpi id, row is staff id. If equal to 1, that mean that staff can do that kpi, otherwise
+
+        Args:
+            listKpis (List[KpiRequest]): _description_
+            listEmployees (List[Employees]): _description_
+
+        Returns:
+            Tensor: _description_
+        """
         matrix = zeros(len(listEmployees), len(listKpis))
 
         for index, kpi in enumerate(listKpis):
@@ -61,6 +71,17 @@ class DataService:
                     matrix[index_row, index] = 1
 
         return matrix
+
+    def build_executive_task_base_kpi_matrix(listKpis: List[KpiRequest]) -> Tensor:
+        """Build executive task base kpi matrix, row is num task, col is num kpi
+
+        Args:
+            listKpis (List[KpiRequest]): _description_
+
+        Returns:
+            Tensor: _description_
+        """
+        return tensor(list(map(lambda kpi: kpi.task_weight, listKpis)))
 
     def build_hs_memory_candidate(harmony_search: HarmonySearch, lower_upper_matrix: Tensor, executive_staff_matrix: Tensor) -> List:
         object_hs = harmony_search.objective_harmony_search
