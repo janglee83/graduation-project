@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from typing import List
-from requests import KpiRequest, KpiConditionRequest, Employees, Environments, KpiOutput, Equipment
+from requests import KpiRequest, KpiConditionRequest, Employees, Environments, KpiOutput, Equipment, TaskRequest
 from services import DataService, ObjectHarmonyService
 from models import ObjectHarmonySearch
 from torch import Tensor, ones_like, stack
@@ -11,7 +11,7 @@ router = APIRouter()
 
 
 @router.post('/core')
-async def core(listKpis: List[KpiRequest], kpiConditions: List[KpiConditionRequest], listEmployees: List[Employees], environmentsEffect: List[Environments], kpiOutputsEffect: List[KpiOutput], equipmentsEffect: List[Equipment]):
+async def core(listKpis: List[KpiRequest], listTasks: List[TaskRequest], kpiConditions: List[KpiConditionRequest], listEmployees: List[Employees], environmentsEffect: List[Environments], kpiOutputsEffect: List[KpiOutput], equipmentsEffect: List[Equipment]):
     data_service = DataService
 
     relationship_kpi_matrix: Tensor = data_service.build_kpi_relationship_matrix(

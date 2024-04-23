@@ -12,6 +12,10 @@ class KpiRequest(BaseModel):
     lower_bound: float
     upper_bound: float
 
+    # Task weight matrix where the total weight of all items in a row sums up to 1.
+    # If an item's weight is 0, it means that the corresponding task cannot be done by the given kpi_id.
+    task_weight: List[float]
+
     @validator('id')
     def check_string_id(cls, value):
         return check_string_helper(value=value, error_message='Id must be string')
@@ -43,6 +47,23 @@ class KpiRequest(BaseModel):
         if not all(isinstance(item, str) for item in v):
             raise ValueError(
                 "executive_staff must contain only strings or a single string")
+        return v
+
+    @validator('task_weight')
+    def validate_task_weight(cls, v):
+        # Check if the list is not empty
+        if not v:
+            raise ValueError('task_weight cannot be empty')
+
+        # Check if the total weight sums up to 1
+        total_weight = sum(v)
+        if total_weight != 1:
+            raise ValueError('Total weight of task_weight must be 1')
+
+        # Check if all items are non-negative
+        if any(item < 0 for item in v):
+            raise ValueError('task_weight cannot contain negative values')
+
         return v
 
 

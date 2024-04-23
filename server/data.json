@@ -5,18 +5,28 @@
             "name": "KPI order 1",
             "value": 1000,
             "symbol": "USD",
-            "executive_staff": ["1", "2", "4"],
+            "executive_staff": [
+                "1",
+                "2",
+                "4"
+            ],
             "lower_bound": 0.2,
-            "upper_bound": 1
+            "upper_bound": 1,
+            "task_weight": [0.2, 0.2, 0.2, 0.2, 0.2]
         },
         {
             "id": "2",
             "name": "KPI order 2",
             "value": 1000,
             "symbol": "USD",
-            "executive_staff": ["2", "5", "4"],
+            "executive_staff": [
+                "2",
+                "5",
+                "4"
+            ],
             "lower_bound": 0.1,
-            "upper_bound": 1
+            "upper_bound": 1,
+            "task_weight": [0, 0, 0, 0.5, 0.5]
         },
         {
             "id": "3",
@@ -25,7 +35,8 @@
             "symbol": "USD",
             "executive_staff": "all",
             "lower_bound": 0.1,
-            "upper_bound": 1
+            "upper_bound": 1,
+            "task_weight": [0.2, 0.2, 0.2, 0.2, 0.2]
         },
         {
             "id": "4",
@@ -34,7 +45,8 @@
             "symbol": "USD",
             "executive_staff": "all",
             "lower_bound": 0.1,
-            "upper_bound": 1
+            "upper_bound": 1,
+            "task_weight": [0.4, 0, 0.6, 0, 0]
         },
         {
             "id": "5",
@@ -43,38 +55,80 @@
             "symbol": "USD",
             "executive_staff": "all",
             "lower_bound": 0,
-            "upper_bound": 0.4
+            "upper_bound": 0.4,
+            "task_weight": [0.25, 0.6, 0, 0.15, 0]
+        }
+    ],
+    "listTasks": [
+        {
+            "id": "1",
+            "name": "Task order 1",
+            "value": 1000,
+            "symbol": "USD"
+        },
+        {
+            "id": "2",
+            "name": "Task order 2",
+            "value": 1000,
+            "symbol": "USD"
+        },
+        {
+            "id": "3",
+            "name": "Task order 3",
+            "value": 1000,
+            "symbol": "USD"
+        },
+        {
+            "id": "4",
+            "name": "Task order 4",
+            "value": 1000,
+            "symbol": "USD"
+        },
+        {
+            "id": "5",
+            "name": "Task order 5",
+            "value": 1000,
+            "symbol": "USD"
         }
     ],
     "kpiConditions": [
         {
             "id": "1",
             "post_condition": [
-                "4", "3", "2"
+                "4",
+                "3",
+                "2"
             ]
         },
         {
             "id": "2",
             "post_condition": [
-                "1", "5"
+                "1",
+                "5"
             ]
         },
         {
             "id": "3",
             "post_condition": [
-                "5", "1", "2"
+                "5",
+                "1",
+                "2"
             ]
         },
         {
             "id": "4",
             "post_condition": [
-                "1", "2", "3"
+                "1",
+                "2",
+                "3"
             ]
         },
         {
             "id": "5",
             "post_condition": [
-                "4", "1", "3"
+                "4",
+                "1",
+                "3"
             ]
         }
     ],
