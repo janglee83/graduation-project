@@ -1,9 +1,9 @@
 from fastapi import APIRouter
-from typing import List, Dict
+from typing import List
 from requests import KpiRequest, KpiConditionRequest, Employees, Environments, KpiOutput, Equipment
 from services import DataService, ObjectHarmonyService
 from models import ObjectHarmonySearch
-from torch import tensor, zeros, Tensor, min, clamp, masked_select
+from torch import Tensor, ones_like, stack
 from models import HarmonySearch, AntColony
 from services import HarmonyService, AntColonyService
 
@@ -14,10 +14,14 @@ router = APIRouter()
 async def core(listKpis: List[KpiRequest], kpiConditions: List[KpiConditionRequest], listEmployees: List[Employees], environmentsEffect: List[Environments], kpiOutputsEffect: List[KpiOutput], equipmentsEffect: List[Equipment]):
     data_service = DataService
 
-    # Start build relationship kpi matrix
     relationship_kpi_matrix: Tensor = data_service.build_kpi_relationship_matrix(
         kpiConditions)
-    # End build relationship kpi matrix
+
+    lower_upper_matrix: Tensor = data_service.build_lower_upper_matrix(
+        listKpis)
+
+    executive_staff_matrix: Tensor = data_service.build_executive_staff_matrix(
+        listKpis, listEmployees)
 
     # Start build Harmony search instance
     object_harmony_service = ObjectHarmonyService
@@ -32,33 +36,23 @@ async def core(listKpis: List[KpiRequest], kpiConditions: List[KpiConditionReque
         objective_harmony_search=object_harmony_search)
     # End build Harmony search instance
 
-    # # define parameter
-    # generation = 2
+    # build harmony search solution candidate
+    harmony_memory: Tensor = data_service.build_hs_memory_candidate(
+        harmony_search, lower_upper_matrix, executive_staff_matrix)
+    # end build harmony search solution candidate
 
     # build ant colony model
     ant_colony = AntColony(number_ants=10, number_edge=number_params,
-                           relationship_kpi_matrix=relationship_kpi_matrix)
-
-    # build weight matrix
-    matrix_size = len(listKpis) + 2
-    weight_matrix = zeros(matrix_size, matrix_size)
-
-    # build harmony search solution candidate
-    path_solution_candidates: Tensor = data_service.build_harmony_search_candidate(
-        harmony_search, relationship_kpi_matrix, ant_colony)
-
-    # end build harmony search solution candidate
-
-    # data_service.run_algorithms(path_solution_candidates, object_harmony_search)
+                           relationship_kpi_matrix=relationship_kpi_matrix, pheromone_matrix=ones_like(harmony_memory))
 
     # run algorithms
     harmony_service = HarmonyService()
     ant_colony_service = AntColonyService(ant_colony=ant_colony)
+    harmony_search.set_harmony_memory(harmony_memory=harmony_memory)
     best_path = None
     for gen in range(object_harmony_search.max_improvisations):
-        harmony_service.run_algorithm(path_solution_candidates, harmony_search)
-        current_gen_best = ant_colony_service.run_algorithm(
-            path_solution_candidates, len(listEmployees), object_harmony_search)
+        harmony_service.run_algorithm(harmony_search, lower_upper_matrix)
+        current_gen_best = ant_colony_service.run_algorithm(harmony_search)
 
         if best_path is None:
             best_path = current_gen_best
@@ -67,12 +61,17 @@ async def core(listKpis: List[KpiRequest], kpiConditions: List[KpiConditionReque
             best_path = current_gen_best
 
         # update pheromone
-        ant_colony_service.update_local_pheromone(path_solution_candidates)
-        ant_colony_service.update_global_pheromone(
-            path_solution_candidates, best_path_position=best_path['weight_position'], best_weight=best_path['path_length'], best_path=best_path['path'])
+        ant_colony_service.update_local_pheromone(ant_colony)
+
+        if best_path is not None:
+            ant_colony_service.update_global_pheromone(
+                ant_colony, best_path=best_path)
 
         print("Hoàn thành gen thứ: ", gen)
 
     print(best_path)
+    best_path['weight_position'] = stack(best_path['weight_position']).tolist()
+    best_path['path_length'] = best_path['path_length'].item()
+    best_path['ant_weight'] = best_path['ant_weight'].tolist()
 
-    return listKpis
+    return best_path
