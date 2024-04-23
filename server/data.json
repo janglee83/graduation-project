@@ -4,62 +4,77 @@
             "id": "1",
             "name": "KPI order 1",
             "value": 1000,
-            "symbol": "USD"
+            "symbol": "USD",
+            "executive_staff": ["1", "2", "4"],
+            "lower_bound": 0.2,
+            "upper_bound": 1
         },
         {
             "id": "2",
             "name": "KPI order 2",
             "value": 1000,
-            "symbol": "USD"
+            "symbol": "USD",
+            "executive_staff": ["2", "5", "4"],
+            "lower_bound": 0.1,
+            "upper_bound": 1
         },
         {
             "id": "3",
             "name": "KPI order 3",
             "value": 1000,
-            "symbol": "USD"
+            "symbol": "USD",
+            "executive_staff": "all",
+            "lower_bound": 0.1,
+            "upper_bound": 1
         },
         {
             "id": "4",
             "name": "KPI order 4",
             "value": 1000,
-            "symbol": "USD"
+            "symbol": "USD",
+            "executive_staff": "all",
+            "lower_bound": 0.1,
+            "upper_bound": 1
         },
         {
             "id": "5",
             "name": "KPI order 5",
             "value": 1000,
-            "symbol": "USD"
+            "symbol": "USD",
+            "executive_staff": "all",
+            "lower_bound": 0,
+            "upper_bound": 0.4
         }
     ],
     "kpiConditions": [
         {
             "id": "1",
             "post_condition": [
-                "4"
+                "4", "3", "2"
             ]
         },
         {
             "id": "2",
             "post_condition": [
-                "1"
+                "1", "5"
             ]
         },
         {
             "id": "3",
             "post_condition": [
-                "5"
+                "5", "1", "2"
             ]
         },
         {
             "id": "4",
             "post_condition": [
-                "1"
+                "1", "2", "3"
             ]
         },
         {
             "id": "5",
             "post_condition": [
-                "4"
+                "4", "1", "3"
             ]
         }
     ],
