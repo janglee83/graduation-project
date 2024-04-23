@@ -74,4 +74,4 @@ async def core(listKpis: List[KpiRequest], listTasks: List[TaskRequest], kpiCond
     best_path['path_length'] = best_path['path_length'].item()
     best_path['ant_weight'] = best_path['ant_weight'].tolist()
 
-    return best_path
+    return listTasks

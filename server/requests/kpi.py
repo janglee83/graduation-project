@@ -1,4 +1,4 @@
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 from typing import List
 from .helper import check_string_helper, check_float_helper
 
@@ -16,31 +16,31 @@ class KpiRequest(BaseModel):
     # If an item's weight is 0, it means that the corresponding task cannot be done by the given kpi_id.
     task_weight: List[float]
 
-    @validator('id')
+    @field_validator('id')
     def check_string_id(cls, value):
         return check_string_helper(value=value, error_message='Id must be string')
 
-    @validator('name')
+    @field_validator('name')
     def check_string_name(cls, value):
         return check_string_helper(value=value, error_message='Name must be string')
 
-    @validator('value')
+    @field_validator('value')
     def check_float_value(cls, value):
         return check_float_helper(value=value, error_message='Value must be float')
 
-    @validator('symbol')
+    @field_validator('symbol')
     def check_string_symbol(cls, value):
         return check_string_helper(value=value, error_message='Symbol must be float')
 
-    @validator('lower_bound')
+    @field_validator('lower_bound')
     def check_float_lower_bound(cls, value):
         return check_float_helper(value=value, error_message='Lower bound must be float')
 
-    @validator('upper_bound')
+    @field_validator('upper_bound')
     def check_float_upper_bound(cls, value):
         return check_float_helper(value=value, error_message='Upper bound must be float')
 
-    @validator("executive_staff")
+    @field_validator("executive_staff")
     def validate_executive_staff(cls, v):
         if isinstance(v, str):
             v = [v]
@@ -49,7 +49,7 @@ class KpiRequest(BaseModel):
                 "executive_staff must contain only strings or a single string")
         return v
 
-    @validator('task_weight')
+    @field_validator('task_weight')
     def validate_task_weight(cls, v):
         # Check if the list is not empty
         if not v:
@@ -71,11 +71,20 @@ class KpiConditionRequest(BaseModel):
     id: str
     post_condition: List[str]
 
-    @validator('post_condition', each_item=True)
-    def check_string_post_condition(cls, value):
-        return check_string_helper(
-            value=value, error_message='All items in post_condition must be strings')
+    def post_condition_validator(cls, post_condition):
+        if isinstance(post_condition, list):
+            for item in post_condition:
+                cls.check_string_post_condition(
+                    value=item, error_message='All items in post_condition must be strings')
+        else:
+            cls.check_string_post_condition(
+                value=post_condition, error_message='All items in post_condition must be strings')
 
-    @validator('id')
+    @staticmethod
+    def check_string_post_condition(value, error_message):
+        if not isinstance(value, str):
+            raise ValueError(error_message)
+
+    @field_validator('id')
     def check_string_id(cls, value):
         return check_string_helper(value=value, error_message='Id must be string')
