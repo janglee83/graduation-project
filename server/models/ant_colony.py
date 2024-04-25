@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional, List, Any
-from torch import Tensor, pow, sum, max, nonzero, tensor, stack
+from torch import Tensor, pow, sum, max, nonzero, tensor, stack, ones_like
+import torch
 from helpers import convert_edge_str_to_index
 from helpers import FINISH_POINT_NAME
 from models import ObjectHarmonySearch, HarmonySearch
@@ -43,6 +44,23 @@ class AntColony(BaseModel):
 
         return hms_rand, harmony_search.harmony_memory[hms_rand, row, col]
 
+    def get_weight_item_base_rand_hms(self, harmony_search: HarmonySearch, row: int, col: int, item: int):
+        hms_layer_weight = harmony_search.harmony_memory[:, row, col, item]
+        pheromone_layer_value = self.pheromone_matrix[:, row, col, item]
+
+        total = sum(pow(hms_layer_weight, self.beta) *
+                    pow(pheromone_layer_value, self.alpha))
+
+        if total == 0:
+            return tensor(0), tensor(0)
+
+        prob_trans_matrix = pow(hms_layer_weight, self.beta) * \
+            pow(pheromone_layer_value, self.alpha) / total
+
+        _, max_index = max(prob_trans_matrix, dim=0)
+
+        return max_index, hms_layer_weight[max_index]
+
     def get_list_available_next_note(self, start_point: str, list_visited_point: list) -> list:
         index_start_edge = convert_edge_str_to_index(
             start_point, self.number_edge)
@@ -71,26 +89,24 @@ class AntColony(BaseModel):
     def get_distance_point(self, harmony_search: HarmonySearch, to_edge: str, object_hs: ObjectHarmonySearch):
         kpi_index = int(to_edge) - 1
 
-        while True:
-            weight_position = list()
-            list_weight = list()
-            for row in range(len(harmony_search.objective_harmony_search.human_score_vector)):
-                position_harmony_memory, weight = self.get_weight_base_rand_hms(
-                    harmony_search=harmony_search, row=row, col=kpi_index)
+        weight_position = list()
+        list_weight = list()
+        for row in range(3):
+            list_weight_item = list()
+            for item in range(len(object_hs.human_score_vector)):
 
+                position_harmony_memory, weight = self.get_weight_item_base_rand_hms(
+                    harmony_search=harmony_search, row=row, col=kpi_index, item=item)
+
+                list_weight_item.append(weight)
                 weight_position.append(
-                    [position_harmony_memory, row, kpi_index])
-                list_weight.append(weight)
+                    [position_harmony_memory, row, kpi_index, item])
 
-            fitness = object_hs.get_fitness_base_kpi(
-                stack(list_weight), kpi_index=kpi_index)
-
-            if fitness >= 0:
-                break
+            list_weight.append(list_weight_item)
 
         return tensor(weight_position), tensor(list_weight)
 
-    def get_best_next_point(self, start_point: str, list_reachable_point: list, harmony_search: HarmonySearch, ant_weight: Tensor):
+    def get_best_next_point(self, list_reachable_point: list, harmony_search: HarmonySearch):
         if not list_reachable_point:
             return FINISH_POINT_NAME, [], []
 
@@ -110,16 +126,22 @@ class AntColony(BaseModel):
             for index_point_weight, point_weight in enumerate(list_point_weight)
         ])
 
-        point_pheromone_matrix = tensor([
-            [self.pheromone_matrix[depth.item(), row.item(), col.item()]
-             for depth, row, col in point_position]
-            for point_position in list_point_weight_position
-        ])
+        # build pheromone matrix base kpi index
+        point_pheromone_matrix = list()
+        for index, point_position in enumerate(list_point_weight_position):
+            matrix = torch.zeros_like(list_point_weight[index])
+            for hm_index, row, col, item in point_position:
+                matrix[row.item(), item.item()] = self.pheromone_matrix[hm_index.item(
+                ), row.item(), col.item(), item.item()]
+            point_pheromone_matrix.append(matrix)
 
-        total = sum(pow(1/list_point_fitness, self.beta) *
-                    pow(sum(point_pheromone_matrix, dim=1), self.alpha))
-        prob = pow(1/list_point_fitness, self.beta) * \
-            pow(sum(point_pheromone_matrix, dim=1), self.alpha) / total
+        point_pheromone_matrix = stack(point_pheromone_matrix)
+
+        total = sum(pow(point_pheromone_matrix.sum(dim=(1, 2)), self.alpha)
+                    * pow(1 / list_point_fitness, self.beta))
+
+        prob = pow(point_pheromone_matrix.sum(dim=(1, 2)), self.alpha) * \
+            pow(1 / list_point_fitness, self.beta) / total
 
         _, best_point_index = max(prob, dim=0)
 

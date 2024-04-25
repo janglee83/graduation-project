@@ -1,4 +1,5 @@
 import torch
+import torch.nn as nn
 from gluonts.torch.distributions.truncated_normal import TruncatedNormal
 from pydantic import BaseModel
 
@@ -22,13 +23,32 @@ class TruncatedNormalService(BaseModel):
         tensor = torch.normal(mean, std, size=size)
         # Ensure all values are greater than 0
         tensor = torch.clamp(tensor, min=1e-9)
-        if self.min_val is not None or self.max_val is not None:
-            if self.min_val is None:
-                self.min_val = float('-inf')
-            if self.max_val is None:
-                self.max_val = float('inf')
-            tensor = torch.clamp(tensor, min=self.min_val, max=self.max_val)
-        return tensor[0]
+
+        tensor = torch.clamp(tensor, min=self.min_val, max=self.max_val)
+
+        # print(tensor)
+        tensor = tensor[0]
+        print(tensor.sum() < 1)
+
+        # # Ensure the sum of tensor is greater than 1
+        # while tensor.sum() < 1:
+        #     tensor += torch.normal(mean, std, size=size)
+
+        # return tensor[0]
+
+    def generate_truncated_normal_with_sum(self, size: torch.Tensor, min_sum: int = 1, std_dev=0.01):
+        shape = (1, size)
+        mean_tensor = (self.min_val + self.max_val) / 2
+
+        result = torch.empty(shape)
+        nn.init.trunc_normal_(result, mean=mean_tensor,
+                              std=std_dev, a=self.min_val, b=self.max_val)
+
+        # while torch.sum(result) < 1:
+        #     nn.init.trunc_normal_(result, mean=mean_tensor,
+        #                           std=std_dev, a=self.min_val, b=self.max_val)
+
+        return result[0]
 
     def is_truncated_normal(self, harmony: torch.Tensor, tolerance=1e-5):
         sigma = torch.tensor(0.1).requires_grad_(True)  # standard deviation
