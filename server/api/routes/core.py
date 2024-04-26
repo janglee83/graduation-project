@@ -72,7 +72,9 @@ async def core(listKpis: List[KpiRequest], kpiConditions: List[KpiConditionReque
             ant_colony_service.update_global_pheromone(
                 ant_colony, best_path=best_path)
 
-        print("Quãng đường tìm thấy là: ", best_path['path_length'])
+        print("Quãng đường tìm thấy là: ",
+              object_harmony_search.get_fitness(best_path['ant_weight']))
+        print("Thế hệ:", gen)
 
     response = list()
     for col in range(len(object_harmony_search.kpi_weight_vector)):

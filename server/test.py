@@ -1,23 +1,27 @@
-import torch
-import torch.nn as nn
+import json
+from fastapi import APIRouter
+from typing import List
+from requests import KpiRequest, KpiConditionRequest, Employees, Environments, KpiOutput, Equipment, TaskRequest
+from services import DataService, ObjectHarmonyService
+from models import ObjectHarmonySearch
+from torch import Tensor, ones_like, stack
+from models import HarmonySearch, AntColony
+from services import HarmonyService, AntColonyService
+from responses import TaskResponse, CoreResponse
 
-# Define the shape of your tensor
-shape = (3, 3)
+listKpis = list()
+kpiConditions = list()
+listEmployees = list()
+environmentsEffect = list()
+kpiOutputsEffect = list()
+equipmentsEffect = list()
 
-a = 0.05
-
-b = 0.55
-mean = a + torch.rand(1).item() * (b - a)
-
-# Initialize a tensor with truncated normal distribution
-tensor = torch.empty(shape)
-
-# Use trunc_normal_ to initialize the tensor
-nn.init.trunc_normal_(tensor, mean=mean, std=0.1, a=a, b=b)
-
-# Ensure the sum of the tensor is at least 1
-while torch.sum(tensor) < 1:
-    nn.init.trunc_normal_(tensor, mean=mean, std=0.01, a=a, b=b)
-
-# Print the initialized tensor
-print(tensor)
+with open('data.json') as f:
+    d = json.load(f)
+    print(d['listKpis'])
+    listKpis = d['listKpis']
+    kpiConditions = d['kpiConditions']
+    listEmployees = d['listEmployees']
+    environmentsEffect = d['environmentsEffect']
+    kpiOutputsEffect = d['kpiOutputsEffect']
+    equipmentsEffect = d['equipmentsEffect']

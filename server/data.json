@@ -13,12 +13,10 @@
                     "value": 2000,
                     "weight": 0.3,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.55,
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
                     "executive_staff": [
-                        "1",
-                        "2",
-                        "4"
+                        "all"
                     ]
                 },
                 {
@@ -27,11 +25,10 @@
                     "value": 2000,
                     "weight": 0.5,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.73,
+                        "lower_bound": 0.19,
+                "upper_bound": 0.23,
                     "executive_staff": [
-                        "5",
-                        "3"
+                        "all"
                     ]
                 },
                 {
@@ -40,8 +37,8 @@
                     "value": 2000,
                     "weight": 0.2,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                    "lower_bound": 0.19,
+                  "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -61,8 +58,8 @@
                     "value": 2000,
                     "weight": 0.3,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                       "lower_bound": 0.19,
+              "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -73,12 +70,10 @@
                     "value": 2000,
                     "weight": 0.4,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.55,
+                        "lower_bound": 0.19,
+                    "upper_bound": 0.23,
                     "executive_staff": [
-                        "5",
-                        "3",
-                        "1"
+                        "all"
                     ]
                 },
                 {
@@ -87,8 +82,8 @@
                     "value": 2000,
                     "weight": 0.4,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                 "lower_bound": 0.19,
+               "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -108,11 +103,10 @@
                     "value": 2000,
                     "weight": 0.45,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.73,
+                "lower_bound": 0.19,
+                "upper_bound": 0.23,
                     "executive_staff": [
-                        "1",
-                        "5"
+                        "all"
                     ]
                 },
                 {
@@ -121,8 +115,8 @@
                     "value": 2000,
                     "weight": 0.25,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                        "lower_bound": 0.19,
+                 "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -133,8 +127,8 @@
                     "value": 2000,
                     "weight": 0.3,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                     "lower_bound": 0.19,
+           "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -154,8 +148,8 @@
                     "value": 2000,
                     "weight": 0.3,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                   "lower_bound": 0.19,
+               "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -166,8 +160,8 @@
                     "value": 2000,
                     "weight": 0.35,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                  "lower_bound": 0.19,
+               "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -178,8 +172,8 @@
                     "value": 2000,
                     "weight": 0.35,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                   "lower_bound": 0.19,
+                   "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -199,8 +193,8 @@
                     "value": 2000,
                     "weight": 0.15,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                     "lower_bound": 0.19,
+                 "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -211,8 +205,8 @@
                     "value": 2000,
                     "weight": 0.25,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                       "lower_bound": 0.19,
+                 "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
@@ -223,8 +217,8 @@
                     "value": 2000,
                     "weight": 0.6,
                     "symbol": "USD",
-                    "lower_bound": 0.05,
-                    "upper_bound": 0.45,
+                      "lower_bound": 0.19,
+               "upper_bound": 0.23,
                     "executive_staff": [
                         "all"
                     ]
