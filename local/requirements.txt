@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+dotenv
+python-dotenv
+torch
+gluonts
+lightning
+scipy
+orjson
+ujson
+loguru
+matplotlib

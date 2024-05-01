@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "646b8fdd14f2d0ec2a7e48ca"
+  },
+  "STT": 1,
+  "Position": "SalesManager",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "646b8fdd14f2d0ec2a7e48cb"
+  },
+  "STT": 2,
+  "Position": "SalesRepresentative",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "646b8fdd14f2d0ec2a7e48cc"
+  },
+  "STT": 3,
+  "Position": "SalesAssociate",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "646b8fdd14f2d0ec2a7e48cd"
+  },
+  "STT": 4,
+  "Position": "SalesSupportSpecialist",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "646b8fdd14f2d0ec2a7e48ce"
+  },
+  "STT": 5,
+  "Position": "SalesCoordinator",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "64c562f4792e7c9b00abd3b4"
+  },
+  "STT": 6,
+  "Position": "SalesAnalyst",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "64c562fa792e7c9b00abd3b5"
+  },
+  "STT": 7,
+  "Position": "SalesOperationsManager",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "64c56300792e7c9b00abd3b6"
+  },
+  "STT": 8,
+  "Position": "SalesConsultant",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "64c56306792e7c9b00abd3b7"
+  },
+  "STT": 9,
+  "Position": "SalesDirector",
+  "weight": 0.1
+},
+{
+  "_id": {
+    "$oid": "64c5632d792e7c9b00abd3b8"
+  },
+  "STT": 10,
+  "Position": "SalesTrainer ",
+  "weight": 0.1
+}]

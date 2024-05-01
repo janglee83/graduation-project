@@ -1,0 +1,42 @@
+[
+  {
+    "_id": {
+      "$oid": "646b8fdd14f2d0ec2a7e48ca"
+    },
+    "STT": 1,
+    "Position": "Doanhsobanhang",
+    "weight": 0.3
+  },
+  {
+    "_id": {
+      "$oid": "646b8fdd14f2d0ec2a7e48cb"
+    },
+    "STT": 2,
+    "Position": "Soluongkhachhangmoi",
+    "weight": 0.25
+  },
+  {
+    "_id": {
+      "$oid": "646b8fdd14f2d0ec2a7e48cc"
+    },
+    "STT": 3,
+    "Position": "Tylechuyendoikhachhang ",
+    "weight": 0.2
+  },
+  {
+    "_id": {
+      "$oid": "646b8fdd14f2d0ec2a7e48cd"
+    },
+    "STT": 4,
+    "Position": "Soluonggiaodichthanhcong",
+    "weight": 0.15
+  },
+  {
+    "_id": {
+      "$oid": "646b8fdd14f2d0ec2a7e48ce"
+    },
+    "STT": 5,
+    "Position": "Doinhombanhang",
+    "weight": 0.1
+  }
+]

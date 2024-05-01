@@ -1,0 +1,452 @@
+[
+    {
+        "employee_id": 1,
+        "list_kpi": [
+            {
+                "kpi_id": "1",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "2",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "3",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "4",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "5",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "employee_id": 2,
+        "list_kpi": [
+            {
+                "kpi_id": "1",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "2",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "3",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "4",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            },
+            {
+                "kpi_id": "5",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 3
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 4
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "employee_id": 3,
+        "list_kpi": [
+            {
+                "kpi_id": "1",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "2",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "3",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "4",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "5",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "employee_id": 4,
+        "list_kpi": [
+            {
+                "kpi_id": "1",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "2",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "3",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "4",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            },
+            {
+                "kpi_id": "5",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 5
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 3
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "employee_id": 5,
+        "list_kpi": [
+            {
+                "kpi_id": "1",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 2
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 5
+                    }
+                ]
+            },
+            {
+                "kpi_id": "2",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 2
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 5
+                    }
+                ]
+            },
+            {
+                "kpi_id": "3",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 2
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 5
+                    }
+                ]
+            },
+            {
+                "kpi_id": "4",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 2
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 5
+                    }
+                ]
+            },
+            {
+                "kpi_id": "5",
+                "tasks": [
+                    {
+                        "task_id": "1",
+                        "score": 2
+                    },
+                    {
+                        "task_id": "2",
+                        "score": 4
+                    },
+                    {
+                        "task_id": "3",
+                        "score": 5
+                    }
+                ]
+            }
+        ]
+    }
+]
