@@ -1,0 +1,6 @@
+EmpID,PerfScoreID,PerformanceScore,Score,TaskCompletionRate
+1,4,Exceeds,1.25,0.95
+2,3,Fully Meets,1.0,0.9
+3,3,Fully Meets,1.0,0.85
+4,3,Fully Meets,1.0,0.8
+5,3,Fully Meets,1.0,0.95

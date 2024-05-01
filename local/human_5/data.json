@@ -1,0 +1,270 @@
+{
+    "listKpis": [
+        {
+            "id": "1",
+            "name": "Doanh số bán hàng",
+            "value": 1000,
+            "symbol": "USD",
+            "weight": 0.15,
+            "tasks": [
+                {
+                    "id": "1",
+                    "name": "Doanh thu mục tiêu",
+                    "value": 100000,
+                    "weight": 0.3,
+                    "symbol": "USD",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "Lợi nhuận mục tiêu",
+                    "value": 80000,
+                    "weight": 0.5,
+                    "symbol": "USD",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "3",
+                    "name": "Xác định quy mô dự án",
+                    "value": 20000,
+                    "weight": 0.2,
+                    "symbol": "USD",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Số lượng khách hàng mới",
+            "value": 1000,
+            "symbol": "USD",
+            "weight": 0.45,
+            "tasks": [
+                {
+                    "id": "1",
+                    "name": "Tìm kiếm khách hàng",
+                    "value": 3000,
+                    "weight": 0.3,
+                    "symbol": "Người",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "Tham ra sự kiện",
+                    "value": 100,
+                    "weight": 0.4,
+                    "symbol": "Sự kiện",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "3",
+                    "name": "Tạo và quản lý danh sách",
+                    "value": 100,
+                    "weight": 0.4,
+                    "symbol": "Báo cáo",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Tỷ lệ chuyển đổi khách hàng",
+            "value": 1000,
+            "symbol": "USD",
+            "weight": 0.2,
+            "tasks": [
+                {
+                    "id": "1",
+                    "name": "Xây dựng mối quan hệ, đề xuất sản phẩm",
+                    "value": 200,
+                    "weight": 0.45,
+                    "symbol": "Cuộc gọi",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "Đàm phán và thuyết phục khách hàng",
+                    "value": 2500,
+                    "weight": 0.25,
+                    "symbol": "Người",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "3",
+                    "name": "Tư vấn chuyển đổi dịch vụ",
+                    "value": 300,
+                    "weight": 0.3,
+                    "symbol": "Cuộc gọi",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Số lượng giao dịch thành công",
+            "value": 1000,
+            "symbol": "USD",
+            "weight": 0.15,
+            "tasks": [
+                {
+                    "id": "1",
+                    "name": "Điều phối và quản lý khách hàng",
+                    "value": 3000,
+                    "weight": 0.3,
+                    "symbol": "Đơn hàng",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "Tăng giá trị hợp đồng",
+                    "value": 800,
+                    "weight": 0.35,
+                    "symbol": "USD",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "3",
+                    "name": "Ký kết hợp đồng",
+                    "value": 1000,
+                    "weight": 0.35,
+                    "symbol": "Hợp đồng",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "name": "Đội nhóm bán hàng",
+            "value": 1000,
+            "symbol": "USD",
+            "weight": 0.05,
+            "tasks": [
+                {
+                    "id": "1",
+                    "name": "Xây dựng và quản lý đội nhóm",
+                    "value": 150,
+                    "weight": 0.15,
+                    "symbol": "Nhóm",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "Theo dõi và đánh giá nhân viên",
+                    "value": 50,
+                    "weight": 0.25,
+                    "symbol": "Dự án",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                },
+                {
+                    "id": "3",
+                    "name": "Xây dựng môi trường làm việc nhóm",
+                    "value": 3000,
+                    "weight": 0.6,
+                    "symbol": "Giờ",
+                    "lower_bound": 0.19,
+                    "upper_bound": 0.23,
+                    "executive_staff": [
+                        "all"
+                    ]
+                }
+            ]
+        }
+    ],
+    "kpiConditions": [
+        {
+            "id": "1",
+            "post_condition": [
+                "4",
+                "3",
+                "2"
+            ]
+        },
+        {
+            "id": "2",
+            "post_condition": [
+                "1",
+                "5"
+            ]
+        },
+        {
+            "id": "3",
+            "post_condition": [
+                "5",
+                "1",
+                "2"
+            ]
+        },
+        {
+            "id": "4",
+            "post_condition": [
+                "1",
+                "2",
+                "3"
+            ]
+        },
+        {
+            "id": "5",
+            "post_condition": [
+                "4",
+                "1",
+                "3"
+            ]
+        }
+    ]
+}

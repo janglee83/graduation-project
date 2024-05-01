@@ -1,12 +1,12 @@
 from typing import List
-from requests import Employees, KpiRequest
+from requests import EmployeeRequest, KpiRequest
 from torch import tensor, Tensor
 import torch
 
 
 class ObjectHarmonyService(object):
-    def build_employee_score_vector(listEmployees: List[Employees]) -> Tensor:
-        return tensor(list(map(lambda employee: employee.point, listEmployees)))
+    def build_employee_score_vector(listEmployees: List[EmployeeRequest]) -> Tensor:
+        return tensor(list(map(lambda employee: employee.score, listEmployees)))
 
     def build_kpi_value_vector(listKpis: List[KpiRequest]) -> Tensor:
         return tensor(list(map(lambda kpi: kpi.weight, listKpis)))

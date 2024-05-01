@@ -1,11 +1,8 @@
 from typing import List
-from requests import KpiConditionRequest, KpiRequest, Employees, TaskRequest
-from torch import zeros, int32, Tensor, tensor, stack, flip, transpose
+from requests import KpiConditionRequest, KpiRequest, EmployeeRequest
+from torch import zeros, int32, Tensor, stack
 from models import HarmonySearch
 import torch
-# from helpers import START_POINT_NAME, FINISH_POINT_NAME
-# from models import ObjectHarmonySearch
-# from services.truncated_normal_service import TruncatedNormalService
 
 
 class DataService:
@@ -38,7 +35,7 @@ class DataService:
 
         return matrix
 
-    def build_lower_upper_matrix(listKpis: List[KpiRequest]) -> Tensor:
+    def build_lower_upper_matrix(listKpis: List[KpiRequest], listEmployees: List[EmployeeRequest]) -> Tensor:
         """
         Build a lower_upper_matrix base lower and upper bound's value of each kpi's task
 
@@ -48,16 +45,24 @@ class DataService:
         Returns:
             Tensor: lower_upper_matrix
         """
+        list_bound = list()
+        for employee in listEmployees:
+            list_bound.append(employee.score * employee.task_completion_rate)
+
+        list_bound = torch.tensor(list_bound)
+        min_value, _ = torch.min(list_bound, dim=0)
+        max_value, _ = torch.max(list_bound, dim=0)
+        lower_bound = min_value / len(listEmployees)
+        upper_bound = max_value / len(listEmployees)
+
         matrix = torch.zeros(3, len(listKpis), 2)
 
         _ = list(map(lambda kpi, idx: matrix[:, int(kpi.id) - 1].copy_(torch.tensor(
-            list(map(lambda task: (task.lower_bound, task.upper_bound), kpi.tasks)))), listKpis, range(len(listKpis))))
+            list(map(lambda task: (lower_bound, upper_bound), kpi.tasks)))), listKpis, range(len(listKpis))))
 
         return matrix
 
-        # return tensor(list(map(lambda kpi: list(map(lambda task: (task.lower_bound, task.upper_bound), kpi.tasks)), listKpis)))
-
-    def build_executive_staff_matrix(listKpis: List[KpiRequest], listEmployees: List[Employees]) -> Tensor:
+    def build_executive_staff_matrix(listKpis: List[KpiRequest], listEmployees: List[EmployeeRequest]) -> Tensor:
         """
         Build executive staff matrix, col is kpi id, row is staff id. item is list kpi's task. If equal to 1, mean that that staff can do that kpi's task
 
@@ -86,20 +91,6 @@ class DataService:
                 matrix[task_index, int(kpi.id) - 1] = executed_staff
 
         return matrix
-
-    # def build_executive_task_base_kpi_matrix(listKpis: List[KpiRequest], listTasks: List[TaskRequest]) -> Tensor:
-    #     """Build executive task base kpi matrix, row is num task, col is num kpi
-
-    #     Args:
-    #         listKpis (List[KpiRequest]): _description_
-
-    #     Returns:
-    #         Tensor: _description_
-    #     """
-    #     # return tensor(list(map(lambda kpi: kpi.task_weight, listKpis)))
-    #     row_len = len(listTasks)
-    #     list_task_weights = [kpi.task_weight for kpi in listKpis]
-    #     return tensor([[task_weight[i] for task_weight in list_task_weights] for i in range(row_len)])
 
     def build_hs_memory_candidate(harmony_search: HarmonySearch, lower_upper_matrix: Tensor, executive_task_staff_matrix: Tensor) -> Tensor:
         object_hs = harmony_search.objective_harmony_search

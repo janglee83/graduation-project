@@ -1,7 +1,6 @@
 from torch import Tensor, zeros, all, sum
 from models import HarmonySearch
 from random import random, randint
-from services import TruncatedNormalService
 
 
 class HarmonyService(object):
@@ -44,7 +43,7 @@ class HarmonyService(object):
 
             fitness = object_hs.get_fitness(harmony=harmony)
 
-            if fitness >= 0:
+            if fitness > 0:
                 break
 
         harmony_search.update_harmony_memory(

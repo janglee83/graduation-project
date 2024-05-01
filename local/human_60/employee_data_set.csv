@@ -1,0 +1,61 @@
+EmpID,PerfScoreID,PerformanceScore,Score,TaskCompletionRate
+1,4,Exceeds,1.25,0.95
+2,3,Fully Meets,1.0,0.9
+3,3,Fully Meets,1.0,0.85
+4,3,Fully Meets,1.0,0.8
+5,3,Fully Meets,1.0,0.95
+6,4,Exceeds,1.25,0.9
+7,3,Fully Meets,1.0,0.8
+8,3,Fully Meets,1.0,0.95
+9,3,Fully Meets,1.0,0.88
+10,3,Fully Meets,1.0,0.75
+11,3,Fully Meets,1.0,0.95
+12,3,Fully Meets,1.0,0.85
+13,4,Exceeds,1.25,0.8
+14,3,Fully Meets,1.0,0.9
+15,3,Fully Meets,1.0,0.95
+16,3,Fully Meets,1.0,0.95
+17,4,Exceeds,1.25,0.9
+18,3,Fully Meets,1.0,0.8
+19,3,Fully Meets,1.0,0.88
+20,3,Fully Meets,1.0,0.95
+21,3,Fully Meets,1.0,0.95
+22,3,Fully Meets,1.0,0.85
+23,4,Exceeds,1.25,0.8
+24,2,Needs Improvement,0.75,0.9
+25,3,Fully Meets,1.0,0.95
+26,3,Fully Meets,1.0,0.85
+27,3,PIP,0.5,0.8
+28,3,PIP,0.5,0.9
+29,3,PIP,0.5,0.95
+30,3,Fully Meets,1.0,0.85
+31,3,Fully Meets,1.0,0.95
+32,3,Fully Meets,1.0,0.85
+33,3,Fully Meets,1.0,0.8
+34,3,Fully Meets,1.0,0.9
+35,3,Fully Meets,1.0,0.95
+36,3,Fully Meets,1.0,0.8
+37,4,Exceeds,1.25,0.9
+38,3,Fully Meets,1.0,0.95
+39,3,Fully Meets,1.0,0.85
+40,3,Fully Meets,1.0,0.8
+41,3,PIP,0.5,0.85
+42,3,PIP,0.5,0.8
+43,3,PIP,0.5,0.9
+44,3,PIP,0.5,0.95
+45,3,Fully Meets,1.0,0.85
+46,3,Fully Meets,1.0,0.85
+47,3,Fully Meets,1.0,0.8
+48,3,Fully Meets,1.0,0.9
+49,3,Fully Meets,1.0,0.95
+50,3,Fully Meets,1.0,0.85
+51,3,Fully Meets,1.0,0.95
+52,4,Exceeds,1.25,0.85
+53,3,Fully Meets,1.0,0.9
+54,2,Needs Improvement,0.75,0.95
+55,2,Needs Improvement,0.75,0.85
+56,4,Exceeds,1.25,0.85
+57,3,PIP,0.5,0.85
+58,3,Fully Meets,1.0,0.8
+59,3,Fully Meets,1.0,0.9
+60,3,Fully Meets,1.0,0.85

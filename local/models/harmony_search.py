@@ -4,6 +4,7 @@ from typing import List, Optional
 from services.truncated_normal_service import TruncatedNormalService
 from torch import zeros, Tensor, tensor, max, min, zeros_like
 from random import randint, random
+import torch
 
 
 class HarmonySearch(BaseModel):
@@ -52,7 +53,7 @@ class HarmonySearch(BaseModel):
 
             fitness = self.objective_harmony_search.get_fitness(
                 harmony=harmony)
-            if fitness >= 0 and fitness != float('inf'):
+            if fitness > 0:
                 break
 
         return harmony
@@ -106,28 +107,25 @@ class HarmonySearch(BaseModel):
                                        layer[row, col]) * random() * self.objective_harmony_search.bw)
 
     def update_harmony_memory(self, considered_harmony: Tensor, considered_fitness: float) -> None:
+        col_len = len(self.objective_harmony_search.kpi_weight_vector)
+
+        for col in range(col_len):
+            current_kpi_fitness = self.objective_harmony_search.get_fitness_base_kpi(
+                considered_harmony[:, col, :], col)
+
+            current_kpi_hm_fitness = list()
+            for hs in range(self.objective_harmony_search.hms):
+                current_kpi_hm_fitness.append(self.objective_harmony_search.get_fitness_base_kpi(
+                    self.harmony_memory[hs, :, col, :], col))
+
+            current_kpi_hm_fitness = torch.tensor(current_kpi_hm_fitness)
+            worse_fitness_kpi, worse_index_hs = torch.max(
+                current_kpi_hm_fitness, dim=0)
+            if current_kpi_fitness < worse_fitness_kpi:
+                self.harmony_memory[worse_index_hs, :, col] = considered_harmony[:, col]
+
         hm_fitness = tensor(list(map(lambda candidate: self.objective_harmony_search.get_fitness(
             candidate), self.harmony_memory)))
         worse_fitness, worse_index = max(hm_fitness, dim=0)
         if considered_fitness < worse_fitness:
             self.harmony_memory[worse_index] = considered_harmony
-
-    def update_harmony_base_layer(self, considered_layer: Tensor, path_solution_candidate: Tensor, index: int) -> None:
-        print('123')
-
-        def calculate_layer_fitness_value(layer: Tensor) -> Tensor:
-            return tensor([self.objective_harmony_search.get_fitness(row) for row in layer]).view(self.objective_harmony_search.hms, 1)
-
-        fitness_consider_value, fitness_consider_index = min(
-            calculate_layer_fitness_value(considered_layer), dim=0)
-
-        for depth in range(self.objective_harmony_search.hms):
-            layer = self.harmony_memory[depth]
-
-            worse_layer_value, worse_layer_index = max(
-                calculate_layer_fitness_value(layer), dim=0)
-            print(max(
-                calculate_layer_fitness_value(layer), dim=0))
-            if fitness_consider_value < worse_layer_value:
-                path_solution_candidate[index]['harmony_memory'][depth, worse_layer_index.item(
-                )] = considered_layer[fitness_consider_index][0]
