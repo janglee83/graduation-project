@@ -6,7 +6,7 @@ import torch
 
 class ObjectHarmonyService(object):
     def build_employee_score_vector(listEmployees: List[EmployeeRequest]) -> Tensor:
-        return tensor(list(map(lambda employee: employee.score, listEmployees)))
+        return tensor(list(map(lambda employee: employee.score * employee.task_completion_rate, listEmployees)))
 
     def build_kpi_value_vector(listKpis: List[KpiRequest]) -> Tensor:
         return tensor(list(map(lambda kpi: kpi.weight, listKpis)))
