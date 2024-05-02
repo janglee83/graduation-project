@@ -1,6 +1,7 @@
-from torch import Tensor, zeros, all, sum
+from torch import Tensor
 from models import HarmonySearch
 from random import random, randint
+import torch
 
 
 class HarmonyService(object):
@@ -17,33 +18,32 @@ class HarmonyService(object):
 
         while True:
             # generate new harmony from each layer
-            harmony = zeros(row_len, col_len, item_len)
+            harmony = torch.zeros(row_len, col_len, item_len)
 
             for row in range(row_len):
                 for col in range(col_len):
-                    for item in range(item_len):
                         # set bound
-                        bound_matrix = lower_upper_matrix[row, col].clone(
-                        ).detach()
-                        object_hs.set_lower_bound(bound_matrix[0])
-                        object_hs.set_upper_bound(bound_matrix[1])
+                        object_hs.set_lower_bound(
+                            lower_upper_matrix[row, col, 0])
+                        object_hs.set_upper_bound(
+                            lower_upper_matrix[row, col, 1])
 
-                        # add condition if that employee can not do that kpi
-                        if random() < object_hs.hmcr:
-                            harmony_search.memory_consideration(
-                                harmony=harmony, row=row, col=col, item=item)
-
-                            if random() < object_hs.par:
-                                harmony_search.pitch_adjustment(
+                        for item in range(item_len):
+                            if random() < object_hs.hmcr:
+                                harmony_search.memory_consideration(
                                     harmony=harmony, row=row, col=col, item=item)
 
-                        else:
-                            harmony_search.random_selection(
-                                harmony=harmony, row=row, col=col, item=item)
+                                if random() < object_hs.par:
+                                    harmony_search.pitch_adjustment(
+                                        harmony=harmony, row=row, col=col, item=item)
+
+                            else:
+                                harmony_search.random_selection(
+                                    harmony=harmony, row=row, col=col, item=item)
 
             fitness = object_hs.get_fitness(harmony=harmony)
 
-            if fitness > 0:
+            if fitness != float('inf'):
                 break
 
         harmony_search.update_harmony_memory(

@@ -24,43 +24,47 @@ class HarmonySearch(BaseModel):
         item_len = len(self.objective_harmony_search.human_score_vector)
         truncated_normal = TruncatedNormalService()
 
+        # Initialize harmony memory tensor
         while True:
-            harmony = zeros(row_len, col_len, item_len)
+            harmony = torch.zeros(row_len, col_len, item_len)
 
             for row in range(row_len):
                 for col in range(col_len):
-                    size = (executive_task_staff_matrix[row, col].clone(
-                    ).detach() > 0).sum().item()
+                    size = torch.sum(
+                        executive_task_staff_matrix[row, col] > 0).item()
 
-                    # define bound object
-                    bound_matrix = lower_upper_matrix[row, col].clone(
-                    ).detach()
-                    self.objective_harmony_search.set_lower_bound(
-                        bound_matrix[0])
-                    self.objective_harmony_search.set_upper_bound(
-                        bound_matrix[1])
-                    truncated_normal.set_min_val(bound_matrix[0])
-                    truncated_normal.set_max_val(bound_matrix[1])
+                    # Define bounds
+                    lower_bound = lower_upper_matrix[row, col, 0].item()
+                    upper_bound = lower_upper_matrix[row, col, 1].item()
+                    self.objective_harmony_search.set_lower_bound(lower_bound)
+                    self.objective_harmony_search.set_upper_bound(upper_bound)
+                    truncated_normal.set_min_val(lower_bound)
+                    truncated_normal.set_max_val(upper_bound)
 
+                    # Generate truncated normal distribution
                     task_weight = truncated_normal.generate_truncated_normal_with_sum(
                         size=size)
-                    tensor_task_weight = zeros_like(
-                        executive_task_staff_matrix[row, col])
-                    tensor_task_weight[executive_task_staff_matrix[row, col] != 0] = task_weight[:sum(
-                        executive_task_staff_matrix[row, col] != 0)]
 
-                    harmony[row, col] = tensor_task_weight.clone().detach()
+                    # Apply task weights to the executive_task_staff_matrix
+                    non_zero_indices = executive_task_staff_matrix[row, col].nonzero(
+                        as_tuple=True)
+                    tensor_task_weight = torch.zeros_like(
+                        executive_task_staff_matrix[row, col])
+                    tensor_task_weight[non_zero_indices] = task_weight[:size]
+
+                    harmony[row, col] = tensor_task_weight
 
             fitness = self.objective_harmony_search.get_fitness(
                 harmony=harmony)
-            if fitness > 0:
+            if fitness != float('inf'):
                 break
 
         return harmony
 
     def memory_consideration(self, harmony: list, row: int, col: int, item: int) -> None:
-        memory_index = randint(0, self.objective_harmony_search.hms - 1)
-        hm = self.harmony_memory.clone().detach()
+        memory_index = torch.randint(
+            0, self.objective_harmony_search.hms, (1,))
+        hm = self.harmony_memory
         harmony[row, col, item] = hm[memory_index, row, col, item]
 
     def memory_consideration_layer(self, layer: Tensor, row: int, col: int) -> None:
@@ -84,9 +88,9 @@ class HarmonySearch(BaseModel):
             upper_bound = self.objective_harmony_search.upper_bound
 
             # continuous variable
-            adjustment = tensor(random() * bw)
+            adjustment = (torch.rand(1) * bw)[0]
 
-            if random() < 0.5:
+            if torch.rand(1) < 0.5:
                 # adjust pitch down
                 harmony[row, col, item] -= adjustment * \
                     (harmony[row, col, item] - lower_bound)
@@ -107,22 +111,24 @@ class HarmonySearch(BaseModel):
                                        layer[row, col]) * random() * self.objective_harmony_search.bw)
 
     def update_harmony_memory(self, considered_harmony: Tensor, considered_fitness: float) -> None:
-        col_len = len(self.objective_harmony_search.kpi_weight_vector)
+        # consider to use?
+        # col_len = len(self.objective_harmony_search.kpi_weight_vector)
 
-        for col in range(col_len):
-            current_kpi_fitness = self.objective_harmony_search.get_fitness_base_kpi(
-                considered_harmony[:, col, :], col)
+        # for col in range(col_len):
+        #     current_kpi_fitness = self.objective_harmony_search.get_fitness_base_kpi(
+        #         considered_harmony[:, col, :], col)
 
-            current_kpi_hm_fitness = list()
-            for hs in range(self.objective_harmony_search.hms):
-                current_kpi_hm_fitness.append(self.objective_harmony_search.get_fitness_base_kpi(
-                    self.harmony_memory[hs, :, col, :], col))
+        #     current_kpi_hm_fitness = list()
+        #     for hs in range(self.objective_harmony_search.hms):
+        #         current_kpi_hm_fitness.append(self.objective_harmony_search.get_fitness_base_kpi(
+        #             self.harmony_memory[hs, :, col, :], col))
 
-            current_kpi_hm_fitness = torch.tensor(current_kpi_hm_fitness)
-            worse_fitness_kpi, worse_index_hs = torch.max(
-                current_kpi_hm_fitness, dim=0)
-            if current_kpi_fitness < worse_fitness_kpi:
-                self.harmony_memory[worse_index_hs, :, col] = considered_harmony[:, col]
+        #     current_kpi_hm_fitness = torch.tensor(current_kpi_hm_fitness)
+        #     worse_fitness_kpi, worse_index_hs = torch.max(
+        #         current_kpi_hm_fitness, dim=0)
+        #     if current_kpi_fitness < worse_fitness_kpi:
+        #         self.harmony_memory[worse_index_hs, :,
+        #                             col] = considered_harmony[:, col]
 
         hm_fitness = tensor(list(map(lambda candidate: self.objective_harmony_search.get_fitness(
             candidate), self.harmony_memory)))

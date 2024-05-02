@@ -44,10 +44,6 @@ class TruncatedNormalService(BaseModel):
         nn.init.trunc_normal_(result, mean=mean_tensor,
                               std=std_dev, a=self.min_val, b=self.max_val)
 
-        # while torch.sum(result) < 1:
-        #     nn.init.trunc_normal_(result, mean=mean_tensor,
-        #                           std=std_dev, a=self.min_val, b=self.max_val)
-
         return result[0]
 
     def is_truncated_normal(self, harmony: torch.Tensor, tolerance=1e-5):

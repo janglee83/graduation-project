@@ -53,7 +53,7 @@ class DataService:
         min_value, _ = torch.min(list_bound, dim=0)
         max_value, _ = torch.max(list_bound, dim=0)
         lower_bound = min_value / len(listEmployees)
-        upper_bound = max_value / len(listEmployees)
+        upper_bound = max_value / len(listEmployees) + 0.5 / len(listEmployees)
 
         matrix = torch.zeros(3, len(listKpis), 2)
 
