@@ -27,40 +27,6 @@ class AntColonyService(object):
 
         return torch.sum(self.ant_colony.duration_matrix[task_index, kpi_index])
 
-    def ant_random_first_point(self, hms_len: int, row_len: int, col_len: int, item_len: int):
-        def generate_random_int_number(upper_bound: int):
-            return randint(0, upper_bound - 1)
-
-        random_hms = generate_random_int_number(hms_len)
-        random_row = generate_random_int_number(row_len)
-        random_col = generate_random_int_number(col_len)
-        random_item = generate_random_int_number(item_len)
-
-        return random_hms, random_row, random_col, random_item
-
-    def find_best_next_point_position(self, harmony_memory, pheromone_matrix):
-        probabilities = (harmony_memory ** self.ant_colony.alpha) * (pheromone_matrix **
-                                                                     self.ant_colony.beta) * (self.ant_colony.duration_matrix ** (self.ant_colony.beta + 2))
-        total = torch.sum(probabilities)
-        prob_tensor = probabilities / total
-        # Flatten the probability tensor
-        flat_probs = prob_tensor.view(-1)
-
-        # Find the index with maximum probability
-        max_prob_index = torch.argmax(flat_probs)
-
-        # Convert flattened index to original index
-        max_hms = max_prob_index // (
-            harmony_memory.shape[1] * harmony_memory.shape[2] * harmony_memory.shape[3])
-        max_row = (max_prob_index % (harmony_memory.shape[1] * harmony_memory.shape[2] *
-                harmony_memory.shape[3])) // (harmony_memory.shape[2] * harmony_memory.shape[3])
-        max_col = ((max_prob_index % (harmony_memory.shape[1] * harmony_memory.shape[2]
-                * harmony_memory.shape[3])) // harmony_memory.shape[3]) % harmony_memory.shape[2]
-        max_item = (max_prob_index % (
-            harmony_memory.shape[1] * harmony_memory.shape[2] * harmony_memory.shape[3])) % harmony_memory.shape[3]
-
-        return max_hms.item(), max_row.item(), max_col.item(), max_item.item()
-
     def build_ant_weight_base_prob_transit(self, prob_transit: torch.Tensor, num_row: int, num_col: int, num_item: int, hms: int, harmony_search: HarmonySearch):
         # reshape_tensor = prob_transit.view(hms, -1, num_item)
         max_values, max_indices = torch.max(prob_transit, dim=0)
@@ -70,7 +36,7 @@ class AntColonyService(object):
         positions = torch.nonzero(
             max_values.unsqueeze(0) == prob_transit, as_tuple=False)
         positions = [(pos[0].item(), pos[1].item(), pos[2].item())
-                    for pos in positions]
+                     for pos in positions]
 
         ant_matrix = torch.zeros(num_row, num_col, num_item)
         positions_tensor = torch.tensor(positions)
@@ -82,7 +48,8 @@ class AntColonyService(object):
         # item = positions_tensor[:, 3]
 
         # Assign values from harmony_search.harmony_memory to ant_matrix
-        ant_matrix[row, col, :] = harmony_search.harmony_memory[depth, row, col, :]
+        ant_matrix[row, col,
+                   :] = harmony_search.harmony_memory[depth, row, col, :]
 
         return ant_matrix, positions
 
@@ -91,10 +58,8 @@ class AntColonyService(object):
         gen_best_path = list()
 
         ant_weight, ant_weight_position = self.build_ant_weight_base_prob_transit(prob_transit=prob_transit, num_row=num_row,
-                                                num_col=num_col, num_item=num_item, hms=hms, harmony_search=harmony_search)
+                                                                                  num_col=num_col, num_item=num_item, hms=hms, harmony_search=harmony_search)
         fitness = object_hs.get_fitness(ant_weight)
-
-        # print(fitness)
 
         # find current_ant_path
         for _ in range(1):
@@ -140,6 +105,5 @@ class AntColonyService(object):
 
         for kpi_position in best_path['weight_position']:
             depth_val, row_val, col_val = kpi_position
-            prob_transit[depth_val, row_val, col_val] = prob_transit[depth_val, row_val, col_val] * (1 - rho_global[row_val, col_val]) + rho_global[row_val, col_val] * best_path_length_inv
-
-
+            prob_transit[depth_val, row_val, col_val] = prob_transit[depth_val, row_val, col_val] * (
+                1 - rho_global[row_val, col_val]) + rho_global[row_val, col_val] * best_path_length_inv

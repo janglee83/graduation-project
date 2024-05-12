@@ -1,6 +1,6 @@
 from torch import Tensor
 from models import HarmonySearch
-from random import random, randint
+from random import random
 import torch
 
 

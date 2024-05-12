@@ -29,13 +29,14 @@ class DataService:
 
         for task_linkage in listTaskLinkage:
             for index, resource_id in enumerate(task_linkage.resource_ids):
-                matrix[(task_linkage.task_id - 1) % num_row, task_linkage.kpi_metric_id - 1, resource_id - 1] = task_linkage.duration_resource_ids[index]
+                matrix[(task_linkage.task_id - 1) % num_row, task_linkage.kpi_metric_id -
+                       1, resource_id - 1] = task_linkage.duration_resource_ids[index]
 
         return matrix
 
     def build_lower_upper_matrix(self, listResource: list[ResourceRequest], listTaskLinkage: list[TaskLinkageRequest]) -> Tensor:
         num_col = listTaskLinkage[-1].kpi_metric_id
-        num_row = 4 # moi kpi anh xa tu 3 task
+        num_row = 4  # moi kpi anh xa tu 3 task
         num_depth = 2
 
         matrix = torch.zeros(num_row, num_col, num_depth)

@@ -7,16 +7,19 @@ import torch
 from helpers import Timer
 from typing import Any
 
+# use
+
+
 def calculate_prob_transit(harmony_search: HarmonySearch, pheromoneMatrix: torch.Tensor, durationMatrix: torch.Tensor):
     probabilities = ((1 / torch.sum(harmony_search.harmony_memory, dim=3)) ** 0.6) * (
         pheromoneMatrix ** 0.4) * ((1 / torch.sum(durationMatrix, dim=2)) ** (0.6))
-
-    # print(harmony_search.harmony_memory)
 
     total = torch.sum(probabilities)
     prob_tensor = probabilities / total
 
     return prob_tensor
+
+# use
 
 
 def generate_rho_matrix_local(num_row: int, num_col: int, listTask: list[TaskRequest], listTaskLinkage: list[TaskLinkageRequest], num_item: int):
@@ -42,6 +45,8 @@ def generate_rho_matrix_local(num_row: int, num_col: int, listTask: list[TaskReq
             matrix[task_of_kpi_index, kpi_index] = (1 - product_score_mean)
 
     return matrix
+
+# use
 
 
 def generate_rho_matrix_global(num_row: int, num_col: int, listTask: list[TaskRequest], listTaskLinkage: list[TaskLinkageRequest], num_item: int):
@@ -71,8 +76,6 @@ def generate_rho_matrix_global(num_row: int, num_col: int, listTask: list[TaskRe
 
 
 def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
-    bar_length = 50
-
     timer = Timer()
     timer.start()
 
@@ -91,13 +94,14 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
 
     # Filter rows for each factor type
     product_factor_rows = df_affected_factor[df_affected_factor['Type']
-                                            == PRODUCT_FACTOR_TYPE]
+                                             == PRODUCT_FACTOR_TYPE]
     environment_factor_rows = df_affected_factor[df_affected_factor['Type']
-                                                == ENVIRONMENT_FACTOR_TYPE]
+                                                 == ENVIRONMENT_FACTOR_TYPE]
 
     # Create instances for each factor type
     for index, item in product_factor_rows.iterrows():
-        instance = ProductFactor(id=item['ID'], description=item['Description'])
+        instance = ProductFactor(
+            id=item['ID'], description=item['Description'])
         list_product_factor.append(instance)
 
     for index, item in environment_factor_rows.iterrows():
@@ -116,14 +120,14 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
 
     for index, item in df_major.iterrows():
         instance = Major(id=item['id'], name=item['name'],
-                        abbreviation=item['abbreviation'], score=item['score'])
+                         abbreviation=item['abbreviation'], score=item['score'])
         list_major.append(instance)
 
     df_major_type = pandas.read_csv('import_data/medium/type_majors.csv')
 
     for index, item in df_major_type.iterrows():
         instance = MajorType(id=item['id'], name=item['name'],
-                            abbreviation=item['abbreviation'], score=item['score'])
+                             abbreviation=item['abbreviation'], score=item['score'])
         list_major_type.append(instance)
 
     df_resource = pandas.read_csv('import_data/medium/resources.csv')
@@ -153,10 +157,11 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
             list_exp.append(exp)
 
         instance = ResourceRequest(id=id, type=type, description=description,
-                                qualifications=payload_qualification, experience=list_exp)
+                                   qualifications=payload_qualification, experience=list_exp)
         list_resource.append(instance)
 
-    df_task_linkage = pandas.read_csv('import_data/medium/performance_task_linkage.csv')
+    df_task_linkage = pandas.read_csv(
+        'import_data/medium/performance_task_linkage.csv')
 
     for index, item in df_task_linkage.iterrows():
         kpi_metric_id = item['KPI_Metric_Id']
@@ -166,7 +171,7 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
         task_weight = item['Task_Weight']
 
         instance = TaskLinkageRequest(kpi_metric_id=kpi_metric_id, task_id=task_id, resource_ids=resource_ids,
-                                    duration_resource_ids=duration_resource_ids, task_weight=task_weight)
+                                      duration_resource_ids=duration_resource_ids, task_weight=task_weight)
         list_task_linkage.append(instance)
 
     df_task = pandas.read_csv('import_data/medium/tasks.csv')
@@ -179,7 +184,8 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
         requirements = json.loads(item['requirements'])
         affected_factors = json.loads(item['affected_factors'])
 
-        instance = TaskRequest(task_id=task_id, task_type=task_type, description=description, pre_tasks=pre_tasks, requirements=requirements, affected_factors=affected_factors)
+        instance = TaskRequest(task_id=task_id, task_type=task_type, description=description,
+                               pre_tasks=pre_tasks, requirements=requirements, affected_factors=affected_factors)
 
         list_task.append(instance)
 
@@ -187,7 +193,8 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
 
     data_service = DataService()
     relationship_task_tensor = data_service.build_task_relationship(list_task)
-    lower_upper_matrix = data_service.build_lower_upper_matrix(list_resource, list_task_linkage)
+    lower_upper_matrix = data_service.build_lower_upper_matrix(
+        list_resource, list_task_linkage)
 
     # all resource can do that task
 
@@ -197,11 +204,12 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
     number_kpi = list_task_linkage[-1].kpi_metric_id
     number_resource = list_resource[-1].id
     number_ant = 5
-    max_improvisations = 2000
+    max_improvisations = 10
     hms = 20
-    rho_local = generate_rho_matrix_local(num_row=number_task_each, num_col=number_kpi, listTask=list_task, listTaskLinkage=list_task_linkage, num_item=number_resource)
-    rho_global = generate_rho_matrix_local(num_row=number_task_each, num_col=number_kpi,
+    rho_local = generate_rho_matrix_local(num_row=number_task_each, num_col=number_kpi,
                                           listTask=list_task, listTaskLinkage=list_task_linkage, num_item=number_resource)
+    rho_global = generate_rho_matrix_local(num_row=number_task_each, num_col=number_kpi,
+                                           listTask=list_task, listTaskLinkage=list_task_linkage, num_item=number_resource)
 
     # Start build Harmony search instance
     object_harmony_service = ObjectHarmonyService
@@ -214,14 +222,17 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
         objective_harmony_search=object_harmony_search)
 
     # build harmony search solution candidate
-    harmony_memory: torch.Tensor = data_service.build_hs_memory_candidate(harmony_search, lower_upper_matrix, number_task_each, number_kpi, number_resource)
+    harmony_memory: torch.Tensor = data_service.build_hs_memory_candidate(
+        harmony_search, lower_upper_matrix, number_task_each, number_kpi, number_resource)
 
     # build ant colony model
-    pheromone_matrix = torch.ones(object_harmony_search.hms, number_task_each, number_kpi)
-    duration_matrix = data_service.build_duration_matrix(list_task_linkage, number_task_each, number_kpi, number_resource)
+    pheromone_matrix = torch.ones(
+        object_harmony_search.hms, number_task_each, number_kpi)
+    duration_matrix = data_service.build_duration_matrix(
+        list_task_linkage, number_task_each, number_kpi, number_resource)
 
     ant_colony = AntColony(number_ants=number_ant, number_edge=number_task,
-                        relationship_kpi_matrix=relationship_task_tensor, pheromone_matrix=pheromone_matrix, duration_matrix=duration_matrix)
+                           relationship_kpi_matrix=relationship_task_tensor, pheromone_matrix=pheromone_matrix, duration_matrix=duration_matrix)
 
     # START RUN ALGORITHMS
     harmony_service = HarmonyService()
@@ -234,9 +245,11 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
     list_fitness = list()
 
     for gen in range(object_harmony_search.max_improvisations):
-        _ = harmony_service.run_algorithm(harmony_search, lower_upper_matrix, number_task_each, number_kpi, number_resource)
+        _ = harmony_service.run_algorithm(
+            harmony_search, lower_upper_matrix, number_task_each, number_kpi, number_resource)
 
-        prob_transit = calculate_prob_transit(harmony_search=harmony_search, pheromoneMatrix=pheromone_matrix, durationMatrix=duration_matrix)
+        prob_transit = calculate_prob_transit(
+            harmony_search=harmony_search, pheromoneMatrix=pheromone_matrix, durationMatrix=duration_matrix)
 
         current_gen_best = ant_colony_service.run_algorithm(
             harmony_search=harmony_search, num_row=number_task_each, num_col=number_kpi, num_item=number_resource, hms=hms, listTaskLinkage=list_task_linkage, num_task=number_task, prob_transit=prob_transit)
@@ -263,6 +276,7 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
     print(timer.get_runtime())
 
     return timer.get_runtime(), best_path, list_task_linkage, torch.tensor(list_fitness).tolist()
+
 
 if __name__ == "__main__":
     mainFunction()

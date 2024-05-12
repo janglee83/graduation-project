@@ -17,25 +17,6 @@ class TruncatedNormalService(BaseModel):
     def set_max_val(self, max_val: float) -> None:
         self.max_val = max_val
 
-    def truncated_normal(self, size, std=0.01):
-        mean = self.min_val + \
-            torch.rand(1).item() * (self.max_val - self.min_val)
-        tensor = torch.normal(mean, std, size=size)
-        # Ensure all values are greater than 0
-        tensor = torch.clamp(tensor, min=1e-9)
-
-        tensor = torch.clamp(tensor, min=self.min_val, max=self.max_val)
-
-        # print(tensor)
-        tensor = tensor[0]
-        print(tensor.sum() < 1)
-
-        # # Ensure the sum of tensor is greater than 1
-        # while tensor.sum() < 1:
-        #     tensor += torch.normal(mean, std, size=size)
-
-        # return tensor[0]
-
     def generate_truncated_normal_with_sum(self, size: torch.Tensor, min_sum: int = 1, std_dev=0.01):
         shape = (1, size)
         mean_tensor = (self.min_val + self.max_val) / 2
