@@ -7,8 +7,6 @@ import torch
 from helpers import Timer
 from typing import Any
 
-# use
-
 
 def calculate_prob_transit(harmony_search: HarmonySearch, pheromoneMatrix: torch.Tensor, durationMatrix: torch.Tensor):
     probabilities = ((1 / torch.sum(harmony_search.harmony_memory, dim=3)) ** 0.6) * (
@@ -18,8 +16,6 @@ def calculate_prob_transit(harmony_search: HarmonySearch, pheromoneMatrix: torch
     prob_tensor = probabilities / total
 
     return prob_tensor
-
-# use
 
 
 def generate_rho_matrix_local(num_row: int, num_col: int, listTask: list[TaskRequest], listTaskLinkage: list[TaskLinkageRequest], num_item: int):
@@ -45,8 +41,6 @@ def generate_rho_matrix_local(num_row: int, num_col: int, listTask: list[TaskReq
             matrix[task_of_kpi_index, kpi_index] = (1 - product_score_mean)
 
     return matrix
-
-# use
 
 
 def generate_rho_matrix_global(num_row: int, num_col: int, listTask: list[TaskRequest], listTaskLinkage: list[TaskLinkageRequest], num_item: int):
@@ -197,15 +191,14 @@ def mainFunction() -> tuple[float, Any, list[TaskLinkageRequest]]:
         list_resource, list_task_linkage)
 
     # all resource can do that task
-
     # define const
     number_task_each = 4
     number_task = list_task_linkage[-1].task_id
     number_kpi = list_task_linkage[-1].kpi_metric_id
     number_resource = list_resource[-1].id
     number_ant = 5
-    max_improvisations = 10
-    hms = 20
+    max_improvisations = 1800
+    hms = 50
     rho_local = generate_rho_matrix_local(num_row=number_task_each, num_col=number_kpi,
                                           listTask=list_task, listTaskLinkage=list_task_linkage, num_item=number_resource)
     rho_global = generate_rho_matrix_local(num_row=number_task_each, num_col=number_kpi,

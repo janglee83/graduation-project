@@ -57,7 +57,7 @@ def write_solution_into_csv(solution: torch.Tensor, list_task_linkage_global: li
     df.to_csv('results/medium/solution.csv', index=False)
 
 if __name__ == "__main__":
-    time_repeat_func = 1
+    time_repeat_func = 3
 
     list_runtime = list()
     tensor_best_weight = []
