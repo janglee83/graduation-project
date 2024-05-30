@@ -1,0 +1,37 @@
+unit,goal_description,success_criteria,goal_unit,unit_goal_value
+Phòng Chăm sóc khách hàng,Doanh thu,Tổng doanh thu thuần,tỷ đồng,78.95913696289062
+Phòng Chăm sóc khách hàng,Tỷ lệ phế phẩm,Tống số tỷ lệ phế phẩm / sản phẩm,Sản phẩm,167127.765625
+Phòng Chăm sóc khách hàng,Tỉ lệ nhân viên được đào tạo chuyên sâu về chuyên môn ít nhất 1 khóa trong năm,Số lượng nhân viên được đào tạo chuyên môn / tổng số nhân sự,Nhân viên,16.075008392333984
+Phòng Chăm sóc khách hàng,Tỉ lệ nhân viên được đạt chuẩn năng lực chức danh/ đạt định mức công việc,Tỷ lệ nhân viên đạt chuẩn / tổng số nhân sự,Nhân viên,25.42754554748535
+Phòng Chăm sóc khách hàng,Tỉ lệ nhân viên đồng ý chính sách động viên khen thưởng và kỹ luật,Tỷ lệ nhân viên đồng ý chính sách động viên khen thưởng / tổng số nhân sự,Nhân viên,25.90064239501953
+Phòng Chăm sóc khách hàng,Số lượng nhân viên vi phạm quy định 5S,Số lượng nhân viên quy định / tổng số nhân sự,Nhân viên,1.6956768035888672
+Phòng nhân sự,Doanh thu,Tổng doanh thu thuần,tỷ đồng,82.26374053955078
+Phòng nhân sự,Tỷ lệ phế phẩm,Tống số tỷ lệ phế phẩm / sản phẩm,Sản phẩm,168706.109375
+Phòng nhân sự,Tỉ lệ nhân viên được đào tạo chuyên sâu về chuyên môn ít nhất 1 khóa trong năm,Số lượng nhân viên được đào tạo chuyên môn / tổng số nhân sự,Nhân viên,15.883233070373535
+Phòng nhân sự,Tỉ lệ nhân viên được đạt chuẩn năng lực chức danh/ đạt định mức công việc,Tỷ lệ nhân viên đạt chuẩn / tổng số nhân sự,Nhân viên,25.538026809692383
+Phòng nhân sự,Tỉ lệ nhân viên đồng ý chính sách động viên khen thưởng và kỹ luật,Tỷ lệ nhân viên đồng ý chính sách động viên khen thưởng / tổng số nhân sự,Nhân viên,25.24912452697754
+Phòng nhân sự,Số lượng nhân viên vi phạm quy định 5S,Số lượng nhân viên quy định / tổng số nhân sự,Nhân viên,1.7270386219024658
+Bộ phận kinh doanh,Doanh thu,Tổng doanh thu thuần,tỷ đồng,80.98155212402344
+Bộ phận kinh doanh,Tỷ lệ phế phẩm,Tống số tỷ lệ phế phẩm / sản phẩm,Sản phẩm,165148.203125
+Bộ phận kinh doanh,Tỉ lệ nhân viên được đào tạo chuyên sâu về chuyên môn ít nhất 1 khóa trong năm,Số lượng nhân viên được đào tạo chuyên môn / tổng số nhân sự,Nhân viên,15.913158416748047
+Bộ phận kinh doanh,Tỉ lệ nhân viên được đạt chuẩn năng lực chức danh/ đạt định mức công việc,Tỷ lệ nhân viên đạt chuẩn / tổng số nhân sự,Nhân viên,25.569049835205078
+Bộ phận kinh doanh,Tỉ lệ nhân viên đồng ý chính sách động viên khen thưởng và kỹ luật,Tỷ lệ nhân viên đồng ý chính sách động viên khen thưởng / tổng số nhân sự,Nhân viên,25.771879196166992
+Bộ phận kinh doanh,Số lượng nhân viên vi phạm quy định 5S,Số lượng nhân viên quy định / tổng số nhân sự,Nhân viên,1.6789305210113525
+Phòng kế hoạch,Doanh thu,Tổng doanh thu thuần,tỷ đồng,80.17121124267578
+Phòng kế hoạch,Tỷ lệ phế phẩm,Tống số tỷ lệ phế phẩm / sản phẩm,Sản phẩm,166442.25
+Phòng kế hoạch,Tỉ lệ nhân viên được đào tạo chuyên sâu về chuyên môn ít nhất 1 khóa trong năm,Số lượng nhân viên được đào tạo chuyên môn / tổng số nhân sự,Nhân viên,15.892068862915039
+Phòng kế hoạch,Tỉ lệ nhân viên được đạt chuẩn năng lực chức danh/ đạt định mức công việc,Tỷ lệ nhân viên đạt chuẩn / tổng số nhân sự,Nhân viên,25.540016174316406
+Phòng kế hoạch,Tỉ lệ nhân viên đồng ý chính sách động viên khen thưởng và kỹ luật,Tỷ lệ nhân viên đồng ý chính sách động viên khen thưởng / tổng số nhân sự,Nhân viên,25.786699295043945
+Phòng kế hoạch,Số lượng nhân viên vi phạm quy định 5S,Số lượng nhân viên quy định / tổng số nhân sự,Nhân viên,1.711781620979309
+Phòng Maketing & nghiên cứu phát triển sản phẩm,Doanh thu,Tổng doanh thu thuần,tỷ đồng,81.71881103515625
+Phòng Maketing & nghiên cứu phát triển sản phẩm,Tỷ lệ phế phẩm,Tống số tỷ lệ phế phẩm / sản phẩm,Sản phẩm,167627.25
+Phòng Maketing & nghiên cứu phát triển sản phẩm,Tỉ lệ nhân viên được đào tạo chuyên sâu về chuyên môn ít nhất 1 khóa trong năm,Số lượng nhân viên được đào tạo chuyên môn / tổng số nhân sự,Nhân viên,15.936518669128418
+Phòng Maketing & nghiên cứu phát triển sản phẩm,Tỉ lệ nhân viên được đạt chuẩn năng lực chức danh/ đạt định mức công việc,Tỷ lệ nhân viên đạt chuẩn / tổng số nhân sự,Nhân viên,25.524532318115234
+Phòng Maketing & nghiên cứu phát triển sản phẩm,Tỉ lệ nhân viên đồng ý chính sách động viên khen thưởng và kỹ luật,Tỷ lệ nhân viên đồng ý chính sách động viên khen thưởng / tổng số nhân sự,Nhân viên,25.196640014648438
+Phòng Maketing & nghiên cứu phát triển sản phẩm,Số lượng nhân viên vi phạm quy định 5S,Số lượng nhân viên quy định / tổng số nhân sự,Nhân viên,1.6786539554595947
+Phòng tài chính kế toán,Doanh thu,Tổng doanh thu thuần,tỷ đồng,80.13324737548828
+Phòng tài chính kế toán,Tỷ lệ phế phẩm,Tống số tỷ lệ phế phẩm / sản phẩm,Sản phẩm,169714.28125
+Phòng tài chính kế toán,Tỉ lệ nhân viên được đào tạo chuyên sâu về chuyên môn ít nhất 1 khóa trong năm,Số lượng nhân viên được đào tạo chuyên môn / tổng số nhân sự,Nhân viên,15.688224792480469
+Phòng tài chính kế toán,Tỉ lệ nhân viên được đạt chuẩn năng lực chức danh/ đạt định mức công việc,Tỷ lệ nhân viên đạt chuẩn / tổng số nhân sự,Nhân viên,25.509916305541992
+Phòng tài chính kế toán,Tỉ lệ nhân viên đồng ý chính sách động viên khen thưởng và kỹ luật,Tỷ lệ nhân viên đồng ý chính sách động viên khen thưởng / tổng số nhân sự,Nhân viên,25.821460723876953
+Phòng tài chính kế toán,Số lượng nhân viên vi phạm quy định 5S,Số lượng nhân viên quy định / tổng số nhân sự,Nhân viên,1.6719858646392822

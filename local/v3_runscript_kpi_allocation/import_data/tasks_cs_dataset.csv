@@ -1,0 +1,49 @@
+TaskID,Description,Pre-TaskIDs,Metric_ID,Value,Unit,Weight,StartDate,EndDate,Duration
+1,"Khảo sát hài lòng khách hàng qua điện thoại, gặp trực tiếp và email","N/A",1,100,"khảo sát",0.5,"2024-06-01","2024-06-05",40
+2,"Thu thập dữ liệu khảo sát từ các cuộc gọi và gặp mặt trực tiếp",1,1,100,"khảo sát",0.25,"2024-06-06","2024-06-10",30
+3,"Phân tích dữ liệu hài lòng khách hàng qua email",1,1,100,"khảo sát",0.25,"2024-06-11","2024-06-15",30
+4,"Thu thập dữ liệu khảo sát từ Survey Monkey","N/A",2,200,"khảo sát",0.35,"2024-06-01","2024-06-03",20
+5,"Phân tích dữ liệu khảo sát từ Survey Monkey",4,2,200,"khảo sát",0.35,"2024-06-04","2024-06-08",40
+6,"Tạo báo cáo về sự hài lòng của khách hàng từ dữ liệu Survey Monkey",5,2,1,"báo cáo",0.3,"2024-06-09","2024-06-12",24
+7,"Xác định các yếu tố ảnh hưởng đến SLA dịch vụ khách hàng","N/A",3,1,"phân tích",0.35,"2024-06-01","2024-06-03",24
+8,"Thiết lập hệ thống giám sát SLA dịch vụ khách hàng",7,3,1,"hệ thống",0.4,"2024-06-04","2024-06-07",32
+9,"Tạo báo cáo hàng tháng về SLA dịch vụ khách hàng",8,3,1,"báo cáo",0.25,"2024-06-08","2024-06-10",24
+10,"Thiết lập hệ thống báo cáo tự động để theo dõi SLA của CAS","N/A",4,1,"hệ thống",0.45,"2024-06-01","2024-06-04",32
+11,"Giám sát và đánh giá SLA của CAS hàng tuần",10,4,4,"đánh giá",0.3,"2024-06-05","2024-06-09",30
+12,"Tạo báo cáo hàng tháng về SLA của CAS",11,4,1,"báo cáo",0.25,"2024-06-10","2024-06-12",20
+13,"Xây dựng hệ thống tự phục vụ để khách hàng tự hoàn thành các giao dịch","N/A",5,1,"hệ thống",0.45,"2024-06-01","2024-06-05",40
+14,"Thu thập và phân tích dữ liệu từ các kênh tự phục vụ",13,5,200,"giao dịch",0.35,"2024-06-06","2024-06-10",40
+15,"Tạo báo cáo hàng tháng về tỉ lệ giao dịch hoàn thành qua kênh tự phục vụ",14,5,1,"báo cáo",0.2,"2024-06-11","2024-06-12",10
+16,"Đánh giá mức độ hài lòng của khách hàng thông qua trang web","N/A",6,100,"khảo sát",0.35,"2024-06-01","2024-06-04",30
+17,"Thu thập dữ liệu hài lòng khách hàng từ trang web",16,6,100,"khảo sát",0.4,"2024-06-05","2024-06-09",40
+18,"Tạo báo cáo về mức độ hài lòng của khách hàng từ trang web",17,6,1,"báo cáo",0.25,"2024-06-10","2024-06-12",20
+19,"Thu thập dữ liệu về thời gian chờ đợi không hẹn trước tại điểm gặp mặt","N/A",7,50,"lượt đo",0.4,"2024-06-01","2024-06-03",24
+20,"Phân tích dữ liệu về thời gian chờ đợi không hẹn trước",19,7,50,"lượt đo",0.35,"2024-06-04","2024-06-06",24
+21,"Tạo báo cáo hàng tháng về thời gian chờ đợi không hẹn trước",20,7,1,"báo cáo",0.25,"2024-06-07","2024-06-08",16
+22,"Thu thập dữ liệu về thời gian chờ đợi có hẹn trước tại điểm gặp mặt","N/A",8,50,"lượt đo",0.4,"2024-06-01","2024-06-03",24
+23,"Phân tích dữ liệu về thời gian chờ đợi có hẹn trước",22,8,50,"lượt đo",0.35,"2024-06-04","2024-06-06",24
+24,"Tạo báo cáo hàng tháng về thời gian chờ đợi có hẹn trước",23,8,1,"báo cáo",0.25,"2024-06-07","2024-06-08",16
+25,"Theo dõi và ghi nhận các email và form web được chuyển tiếp trong vòng 1 ngày","N/A",9,100,"email",0.35,"2024-06-01","2024-06-03",24
+26,"Phân tích dữ liệu email và form web được chuyển tiếp",25,9,100,"email",0.4,"2024-06-04","2024-06-07",32
+27,"Tạo báo cáo hàng tháng về email và form web được chuyển tiếp",26,9,1,"báo cáo",0.25,"2024-06-08","2024-06-10",24
+28,"Phân tích và phản hồi các email và form web trong vòng 5 ngày","N/A",10,100,"email",0.4,"2024-06-01","2024-06-03",24
+29,"Đánh giá hiệu suất phản hồi email và form web",28,10,100,"email",0.35,"2024-06-04","2024-06-07",32
+30,"Tạo báo cáo hàng tháng về hiệu suất phản hồi email và form web",29,10,1,"báo cáo",0.25,"2024-06-08","2024-06-10",24
+31,"Đảm bảo phản hồi các yêu cầu của thành viên trong vòng 10 ngày","N/A",11,100,"yêu cầu",0.4,"2024-06-01","2024-06-03",24
+32,"Theo dõi hiệu suất phản hồi yêu cầu của thành viên",31,11,100,"yêu cầu",0.3,"2024-06-04","2024-06-07",32
+33,"Tạo báo cáo hàng tháng về hiệu suất phản hồi yêu cầu của thành viên",32,11,1,"báo cáo",0.3,"2024-06-08","2024-06-10",24
+34,"Xử lý khiếu nại trong SLA đã quy định","N/A",12,50,"khiếu nại",0.45,"2024-06-01","2024-06-03",24
+35,"Theo dõi và phân tích dữ liệu xử lý khiếu nại",34,12,50,"khiếu nại",0.3,"2024-06-04","2024-06-06",24
+36,"Tạo báo cáo hàng tháng về xử lý khiếu nại",35,12,1,"báo cáo",0.25,"2024-06-07","2024-06-08",16
+37,"Đánh giá các khiếu nại giai đoạn 2 và xác định những khiếu nại hoàn toàn ủng hộ khách hàng","N/A",13,20,"khiếu nại",0.45,"2024-06-01","2024-06-03",24
+38,"Theo dõi và phân tích dữ liệu khiếu nại giai đoạn 2",37,13,20,"khiếu nại",0.3,"2024-06-04","2024-06-06",24
+39,"Tạo báo cáo hàng tháng về khiếu nại giai đoạn 2",38,13,1,"báo cáo",0.25,"2024-06-07","2024-06-08",16
+40,"Theo dõi % cuộc gọi được trả lời trong 120 giây","N/A",14,200,"cuộc gọi",0.4,"2024-06-01","2024-06-03",24
+41,"Phân tích dữ liệu về % cuộc gọi được trả lời trong 120 giây",40,14,200,"cuộc gọi",0.35,"2024-06-04","2024-06-07",32
+42,"Tạo báo cáo hàng tháng về % cuộc gọi được trả lời trong 120 giây",41,14,1,"báo cáo",0.25,"2024-06-08","2024-06-10",24
+43,"Xác định và hỗ trợ các khách hàng cần thêm sự trợ giúp","N/A",15,30,"khách hàng",0.4,"2024-06-01","2024-06-05",40
+44,"Theo dõi và phân tích dữ liệu hỗ trợ khách hàng cần thêm sự trợ giúp",43,15,30,"trường hợp",0.35,"2024-06-06","2024-06-09",32
+45,"Tạo báo cáo hàng tháng về hỗ trợ khách hàng cần thêm sự trợ giúp",44,15,1,"báo cáo",0.25,"2024-06-10","2024-06-11",16
+46,"Đánh giá và giảm số trường hợp liên hệ không thể tránh khỏi","N/A",16,50,"trường hợp",0.4,"2024-06-01","2024-06-03",24
+47,"Phân tích dữ liệu về các trường hợp liên hệ không thể tránh khỏi",46,16,50,"trường hợp",0.35,"2024-06-04","2024-06-07",32
+48,"Tạo báo cáo hàng tháng về các trường hợp liên hệ không thể tránh khỏi",47,16,1,"báo cáo",0.25,"2024-06-08","2024-06-10",24

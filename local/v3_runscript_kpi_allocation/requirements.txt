@@ -1,0 +1,14 @@
+torch~=2.3.0
+gluonts~=0.14.4
+lightning
+scipy
+orjson
+ujson
+loguru
+matplotlib~=3.8.4
+openpyxl
+
+pandas~=2.1.4
+requests~=2.32.2
+pydantic~=2.7.1
+numpy~=1.26.4

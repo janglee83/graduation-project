@@ -1,0 +1,7 @@
+ID,Description,Planed value,Unit,Actual value,Parent Goal,Sub goal,Success criteria
+1,Doanh thu,480,tỷ đồng,,,,Tổng doanh thu thuần
+2,Tỷ lệ phế phẩm,1000000,Sản phẩm,,,,Tống số tỷ lệ phế phẩm / sản phẩm
+3,Tỉ lệ nhân viên được đào tạo chuyên sâu về chuyên môn ít nhất 1 khóa trong năm,95,Nhân viên,,,,Số lượng nhân viên được đào tạo chuyên môn / tổng số nhân sự
+4,Tỉ lệ nhân viên được đạt chuẩn năng lực chức danh/ đạt định mức công việc,152,Nhân viên,,,,Tỷ lệ nhân viên đạt chuẩn / tổng số nhân sự
+5,Tỉ lệ nhân viên đồng ý chính sách động viên khen thưởng và kỹ luật,152,Nhân viên,,,,Tỷ lệ nhân viên đồng ý chính sách động viên khen thưởng / tổng số nhân sự
+6,Số lượng nhân viên vi phạm quy định 5S,10,Nhân viên,,,,Số lượng nhân viên quy định / tổng số nhân sự

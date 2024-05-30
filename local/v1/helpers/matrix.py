@@ -1,0 +1,2 @@
+START_POINT_NAME = 'start'
+FINISH_POINT_NAME = 'finish'

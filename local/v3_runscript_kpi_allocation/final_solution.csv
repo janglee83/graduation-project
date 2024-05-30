@@ -1,0 +1,133 @@
+task_id,metric_id,description,origin_task_value,resource_id,resource_weight,resource_value,resource_duration,kpi_reach_prediction
+1,1,"Khảo sát hài lòng khách hàng qua điện thoại, gặp trực tiếp và email",100.0,5,0.36,36.11,14.44,0.18
+1,1,"Khảo sát hài lòng khách hàng qua điện thoại, gặp trực tiếp và email",100.0,4,0.2,19.81,7.93,0.1
+1,1,"Khảo sát hài lòng khách hàng qua điện thoại, gặp trực tiếp và email",100.0,9,0.2,20.21,8.08,0.1
+1,1,"Khảo sát hài lòng khách hàng qua điện thoại, gặp trực tiếp và email",100.0,11,0.25,24.54,9.82,0.12
+2,1,Thu thập dữ liệu khảo sát từ các cuộc gọi và gặp mặt trực tiếp,100.0,9,0.22,21.93,6.58,0.05
+2,1,Thu thập dữ liệu khảo sát từ các cuộc gọi và gặp mặt trực tiếp,100.0,8,0.29,28.56,8.57,0.07
+2,1,Thu thập dữ liệu khảo sát từ các cuộc gọi và gặp mặt trực tiếp,100.0,4,0.3,30.27,9.08,0.08
+2,1,Thu thập dữ liệu khảo sát từ các cuộc gọi và gặp mặt trực tiếp,100.0,3,0.21,20.88,6.26,0.05
+3,1,Phân tích dữ liệu hài lòng khách hàng qua email,100.0,6,0.36,36.09,10.83,0.09
+3,1,Phân tích dữ liệu hài lòng khách hàng qua email,100.0,10,0.21,20.95,6.29,0.05
+3,1,Phân tích dữ liệu hài lòng khách hàng qua email,100.0,7,0.19,18.75,5.63,0.05
+3,1,Phân tích dữ liệu hài lòng khách hàng qua email,100.0,5,0.25,25.17,7.55,0.06
+4,2,Thu thập dữ liệu khảo sát từ Survey Monkey,200.0,11,0.3,60.05,6.01,0.11
+4,2,Thu thập dữ liệu khảo sát từ Survey Monkey,200.0,7,0.32,64.88,6.49,0.11
+4,2,Thu thập dữ liệu khảo sát từ Survey Monkey,200.0,9,0.22,44.7,4.47,0.08
+4,2,Thu thập dữ liệu khảo sát từ Survey Monkey,200.0,8,0.18,36.5,3.65,0.06
+5,2,Phân tích dữ liệu khảo sát từ Survey Monkey,200.0,3,0.22,44.43,8.89,0.08
+5,2,Phân tích dữ liệu khảo sát từ Survey Monkey,200.0,5,0.23,45.61,9.12,0.08
+5,2,Phân tích dữ liệu khảo sát từ Survey Monkey,200.0,6,0.42,84.19,16.84,0.15
+5,2,Phân tích dữ liệu khảo sát từ Survey Monkey,200.0,10,0.25,50.43,10.09,0.09
+6,2,Tạo báo cáo về sự hài lòng của khách hàng từ dữ liệu Survey Monkey,1.0,4,1.02,1.02,24.56,0.31
+7,3,Xác định các yếu tố ảnh hưởng đến SLA dịch vụ khách hàng,1.0,2,1.0,1.0,24.0,0.35
+8,3,Thiết lập hệ thống giám sát SLA dịch vụ khách hàng,1.0,3,1.01,1.01,32.26,0.4
+9,3,Tạo báo cáo hàng tháng về SLA dịch vụ khách hàng,1.0,6,1.0,1.0,24.02,0.25
+10,4,Thiết lập hệ thống báo cáo tự động để theo dõi SLA của CAS,1.0,1,1.0,1.0,32.06,0.45
+11,4,Giám sát và đánh giá SLA của CAS hàng tuần,4.0,2,1.0,4.0,30.03,0.3
+12,4,Tạo báo cáo hàng tháng về SLA của CAS,1.0,3,1.0,1.0,20.02,0.25
+13,5,Xây dựng hệ thống tự phục vụ để khách hàng tự hoàn thành các giao dịch,1.0,1,1.01,1.01,40.5,0.46
+14,5,Thu thập và phân tích dữ liệu từ các kênh tự phục vụ,200.0,10,0.22,43.96,8.79,0.08
+14,5,Thu thập và phân tích dữ liệu từ các kênh tự phục vụ,200.0,7,0.21,42.41,8.48,0.07
+14,5,Thu thập và phân tích dữ liệu từ các kênh tự phục vụ,200.0,8,0.39,78.41,15.68,0.14
+14,5,Thu thập và phân tích dữ liệu từ các kênh tự phục vụ,200.0,5,0.19,37.34,7.47,0.07
+15,5,Tạo báo cáo hàng tháng về tỉ lệ giao dịch hoàn thành qua kênh tự phục vụ,1.0,3,1.02,1.02,10.19,0.2
+16,6,Đánh giá mức độ hài lòng của khách hàng thông qua trang web,100.0,8,0.23,23.34,7.0,0.08
+16,6,Đánh giá mức độ hài lòng của khách hàng thông qua trang web,100.0,9,0.18,17.72,5.32,0.06
+16,6,Đánh giá mức độ hài lòng của khách hàng thông qua trang web,100.0,4,0.42,41.54,12.46,0.15
+16,6,Đánh giá mức độ hài lòng của khách hàng thông qua trang web,100.0,10,0.21,21.25,6.38,0.07
+17,6,Thu thập dữ liệu hài lòng khách hàng từ trang web,100.0,9,0.21,21.13,8.45,0.08
+17,6,Thu thập dữ liệu hài lòng khách hàng từ trang web,100.0,10,0.21,21.3,8.52,0.09
+17,6,Thu thập dữ liệu hài lòng khách hàng từ trang web,100.0,6,0.28,28.45,11.38,0.11
+17,6,Thu thập dữ liệu hài lòng khách hàng từ trang web,100.0,8,0.3,29.83,11.93,0.12
+18,6,Tạo báo cáo về mức độ hài lòng của khách hàng từ trang web,1.0,7,1.01,1.01,20.11,0.25
+19,7,Thu thập dữ liệu về thời gian chờ đợi không hẹn trước tại điểm gặp mặt,50.0,5,0.19,9.68,4.64,0.08
+19,7,Thu thập dữ liệu về thời gian chờ đợi không hẹn trước tại điểm gặp mặt,50.0,11,0.35,17.48,8.39,0.14
+19,7,Thu thập dữ liệu về thời gian chờ đợi không hẹn trước tại điểm gặp mặt,50.0,4,0.2,9.84,4.72,0.08
+19,7,Thu thập dữ liệu về thời gian chờ đợi không hẹn trước tại điểm gặp mặt,50.0,8,0.27,13.26,6.37,0.11
+20,7,Phân tích dữ liệu về thời gian chờ đợi không hẹn trước,50.0,11,0.2,10.04,4.82,0.07
+20,7,Phân tích dữ liệu về thời gian chờ đợi không hẹn trước,50.0,7,0.34,16.82,8.07,0.12
+20,7,Phân tích dữ liệu về thời gian chờ đợi không hẹn trước,50.0,6,0.25,12.61,6.05,0.09
+20,7,Phân tích dữ liệu về thời gian chờ đợi không hẹn trước,50.0,8,0.23,11.71,5.62,0.08
+21,7,Tạo báo cáo hàng tháng về thời gian chờ đợi không hẹn trước,1.0,5,1.01,1.01,16.12,0.25
+22,8,Thu thập dữ liệu về thời gian chờ đợi có hẹn trước tại điểm gặp mặt,50.0,11,0.37,18.63,8.94,0.15
+22,8,Thu thập dữ liệu về thời gian chờ đợi có hẹn trước tại điểm gặp mặt,50.0,6,0.22,10.95,5.25,0.09
+22,8,Thu thập dữ liệu về thời gian chờ đợi có hẹn trước tại điểm gặp mặt,50.0,7,0.23,11.53,5.54,0.09
+22,8,Thu thập dữ liệu về thời gian chờ đợi có hẹn trước tại điểm gặp mặt,50.0,8,0.2,9.78,4.69,0.08
+23,8,Phân tích dữ liệu về thời gian chờ đợi có hẹn trước,50.0,5,0.25,12.71,6.1,0.09
+23,8,Phân tích dữ liệu về thời gian chờ đợi có hẹn trước,50.0,9,0.3,14.81,7.11,0.1
+23,8,Phân tích dữ liệu về thời gian chờ đợi có hẹn trước,50.0,6,0.18,9.13,4.38,0.06
+23,8,Phân tích dữ liệu về thời gian chờ đợi có hẹn trước,50.0,8,0.27,13.4,6.43,0.09
+24,8,Tạo báo cáo hàng tháng về thời gian chờ đợi có hẹn trước,1.0,3,1.02,1.02,16.33,0.26
+25,9,Theo dõi và ghi nhận các email và form web được chuyển tiếp trong vòng 1 ngày,100.0,7,0.32,32.08,7.7,0.11
+25,9,Theo dõi và ghi nhận các email và form web được chuyển tiếp trong vòng 1 ngày,100.0,10,0.24,24.06,5.77,0.08
+25,9,Theo dõi và ghi nhận các email và form web được chuyển tiếp trong vòng 1 ngày,100.0,8,0.25,24.5,5.88,0.09
+25,9,Theo dõi và ghi nhận các email và form web được chuyển tiếp trong vòng 1 ngày,100.0,5,0.22,22.49,5.4,0.08
+26,9,Phân tích dữ liệu email và form web được chuyển tiếp,100.0,3,0.21,21.37,6.84,0.09
+26,9,Phân tích dữ liệu email và form web được chuyển tiếp,100.0,4,0.4,39.85,12.75,0.16
+26,9,Phân tích dữ liệu email và form web được chuyển tiếp,100.0,6,0.22,22.34,7.15,0.09
+26,9,Phân tích dữ liệu email và form web được chuyển tiếp,100.0,11,0.17,16.56,5.3,0.07
+27,9,Tạo báo cáo hàng tháng về email và form web được chuyển tiếp,1.0,4,1.0,1.0,24.11,0.25
+28,10,Phân tích và phản hồi các email và form web trong vòng 5 ngày,100.0,6,0.19,19.49,4.68,0.08
+28,10,Phân tích và phản hồi các email và form web trong vòng 5 ngày,100.0,11,0.21,20.73,4.98,0.08
+28,10,Phân tích và phản hồi các email và form web trong vòng 5 ngày,100.0,3,0.33,32.85,7.88,0.13
+28,10,Phân tích và phản hồi các email và form web trong vòng 5 ngày,100.0,9,0.27,27.17,6.52,0.11
+29,10,Đánh giá hiệu suất phản hồi email và form web,100.0,7,0.28,28.31,9.06,0.1
+29,10,Đánh giá hiệu suất phản hồi email và form web,100.0,10,0.27,27.12,8.68,0.09
+29,10,Đánh giá hiệu suất phản hồi email và form web,100.0,8,0.26,25.76,8.24,0.09
+29,10,Đánh giá hiệu suất phản hồi email và form web,100.0,4,0.2,19.78,6.33,0.07
+30,10,Tạo báo cáo hàng tháng về hiệu suất phản hồi email và form web,1.0,6,1.02,1.02,24.46,0.25
+31,11,Đảm bảo phản hồi các yêu cầu của thành viên trong vòng 10 ngày,100.0,2,0.28,27.57,6.62,0.11
+31,11,Đảm bảo phản hồi các yêu cầu của thành viên trong vòng 10 ngày,100.0,3,0.19,18.86,4.53,0.08
+31,11,Đảm bảo phản hồi các yêu cầu của thành viên trong vòng 10 ngày,100.0,10,0.41,40.58,9.74,0.16
+31,11,Đảm bảo phản hồi các yêu cầu của thành viên trong vòng 10 ngày,100.0,8,0.17,16.8,4.03,0.07
+32,11,Theo dõi hiệu suất phản hồi yêu cầu của thành viên,100.0,10,0.19,18.81,6.02,0.06
+32,11,Theo dõi hiệu suất phản hồi yêu cầu của thành viên,100.0,8,0.4,39.99,12.8,0.12
+32,11,Theo dõi hiệu suất phản hồi yêu cầu của thành viên,100.0,9,0.24,23.73,7.59,0.07
+32,11,Theo dõi hiệu suất phản hồi yêu cầu của thành viên,100.0,7,0.18,17.79,5.69,0.05
+33,11,Tạo báo cáo hàng tháng về hiệu suất phản hồi yêu cầu của thành viên,1.0,3,1.02,1.02,24.38,0.3
+34,12,Xử lý khiếu nại trong SLA đã quy định,50.0,9,0.18,8.95,4.3,0.08
+34,12,Xử lý khiếu nại trong SLA đã quy định,50.0,5,0.26,13.25,6.36,0.12
+34,12,Xử lý khiếu nại trong SLA đã quy định,50.0,4,0.31,15.34,7.36,0.14
+34,12,Xử lý khiếu nại trong SLA đã quy định,50.0,6,0.29,14.44,6.93,0.13
+35,12,Theo dõi và phân tích dữ liệu xử lý khiếu nại,50.0,10,0.19,9.42,4.52,0.06
+35,12,Theo dõi và phân tích dữ liệu xử lý khiếu nại,50.0,7,0.28,14.03,6.74,0.08
+35,12,Theo dõi và phân tích dữ liệu xử lý khiếu nại,50.0,8,0.35,17.52,8.41,0.11
+35,12,Theo dõi và phân tích dữ liệu xử lý khiếu nại,50.0,4,0.19,9.46,4.54,0.06
+36,12,Tạo báo cáo hàng tháng về xử lý khiếu nại,1.0,7,1.0,1.0,16.03,0.25
+37,13,Đánh giá các khiếu nại giai đoạn 2 và xác định những khiếu nại hoàn toàn ủng hộ khách hàng,20.0,1,0.16,3.29,3.95,0.07
+37,13,Đánh giá các khiếu nại giai đoạn 2 và xác định những khiếu nại hoàn toàn ủng hộ khách hàng,20.0,2,0.24,4.73,5.68,0.11
+37,13,Đánh giá các khiếu nại giai đoạn 2 và xác định những khiếu nại hoàn toàn ủng hộ khách hàng,20.0,7,0.2,4.08,4.9,0.09
+37,13,Đánh giá các khiếu nại giai đoạn 2 và xác định những khiếu nại hoàn toàn ủng hộ khách hàng,20.0,10,0.4,7.92,9.5,0.18
+38,13,Theo dõi và phân tích dữ liệu khiếu nại giai đoạn 2,20.0,3,0.31,6.14,7.37,0.09
+38,13,Theo dõi và phân tích dữ liệu khiếu nại giai đoạn 2,20.0,5,0.23,4.56,5.47,0.07
+38,13,Theo dõi và phân tích dữ liệu khiếu nại giai đoạn 2,20.0,6,0.26,5.21,6.25,0.08
+38,13,Theo dõi và phân tích dữ liệu khiếu nại giai đoạn 2,20.0,8,0.24,4.76,5.71,0.07
+39,13,Tạo báo cáo hàng tháng về khiếu nại giai đoạn 2,1.0,6,1.0,1.0,16.06,0.25
+40,14,Theo dõi % cuộc gọi được trả lời trong 120 giây,200.0,5,0.4,80.38,9.65,0.16
+40,14,Theo dõi % cuộc gọi được trả lời trong 120 giây,200.0,9,0.2,40.54,4.86,0.08
+40,14,Theo dõi % cuộc gọi được trả lời trong 120 giây,200.0,4,0.18,36.4,4.37,0.07
+40,14,Theo dõi % cuộc gọi được trả lời trong 120 giây,200.0,10,0.24,48.77,5.85,0.1
+41,14,Phân tích dữ liệu về % cuộc gọi được trả lời trong 120 giây,200.0,6,0.24,48.79,7.81,0.09
+41,14,Phân tích dữ liệu về % cuộc gọi được trả lời trong 120 giây,200.0,11,0.32,63.96,10.23,0.11
+41,14,Phân tích dữ liệu về % cuộc gọi được trả lời trong 120 giây,200.0,7,0.24,47.4,7.58,0.08
+41,14,Phân tích dữ liệu về % cuộc gọi được trả lời trong 120 giây,200.0,5,0.22,43.64,6.98,0.08
+42,14,Tạo báo cáo hàng tháng về % cuộc gọi được trả lời trong 120 giây,1.0,11,1.01,1.01,24.31,0.25
+43,15,Xác định và hỗ trợ các khách hàng cần thêm sự trợ giúp,30.0,1,0.33,9.92,13.23,0.13
+43,15,Xác định và hỗ trợ các khách hàng cần thêm sự trợ giúp,30.0,2,0.19,5.7,7.6,0.08
+43,15,Xác định và hỗ trợ các khách hàng cần thêm sự trợ giúp,30.0,10,0.29,8.61,11.48,0.11
+43,15,Xác định và hỗ trợ các khách hàng cần thêm sự trợ giúp,30.0,6,0.22,6.72,8.97,0.09
+44,15,Theo dõi và phân tích dữ liệu hỗ trợ khách hàng cần thêm sự trợ giúp,30.0,2,0.27,8.05,8.58,0.09
+44,15,Theo dõi và phân tích dữ liệu hỗ trợ khách hàng cần thêm sự trợ giúp,30.0,10,0.35,10.47,11.16,0.12
+44,15,Theo dõi và phân tích dữ liệu hỗ trợ khách hàng cần thêm sự trợ giúp,30.0,6,0.23,6.9,7.36,0.08
+44,15,Theo dõi và phân tích dữ liệu hỗ trợ khách hàng cần thêm sự trợ giúp,30.0,3,0.18,5.28,5.63,0.06
+45,15,Tạo báo cáo hàng tháng về hỗ trợ khách hàng cần thêm sự trợ giúp,1.0,4,1.0,1.0,16.03,0.25
+46,16,Đánh giá và giảm số trường hợp liên hệ không thể tránh khỏi,50.0,9,0.25,12.28,5.89,0.1
+46,16,Đánh giá và giảm số trường hợp liên hệ không thể tránh khỏi,50.0,10,0.4,19.75,9.48,0.16
+46,16,Đánh giá và giảm số trường hợp liên hệ không thể tránh khỏi,50.0,3,0.17,8.53,4.09,0.07
+46,16,Đánh giá và giảm số trường hợp liên hệ không thể tránh khỏi,50.0,7,0.19,9.49,4.56,0.08
+47,16,Phân tích dữ liệu về các trường hợp liên hệ không thể tránh khỏi,50.0,3,0.41,20.61,13.19,0.14
+47,16,Phân tích dữ liệu về các trường hợp liên hệ không thể tránh khỏi,50.0,6,0.18,8.99,5.76,0.06
+47,16,Phân tích dữ liệu về các trường hợp liên hệ không thể tránh khỏi,50.0,8,0.23,11.45,7.33,0.08
+47,16,Phân tích dữ liệu về các trường hợp liên hệ không thể tránh khỏi,50.0,9,0.23,11.49,7.35,0.08
+48,16,Tạo báo cáo hàng tháng về các trường hợp liên hệ không thể tránh khỏi,1.0,7,1.01,1.01,24.19,0.25
