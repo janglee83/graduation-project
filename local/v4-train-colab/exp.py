@@ -1,7 +1,7 @@
 import main
 import pandas
 import torch
-from requests import TaskLinkageRequest
+from task_linkage_request import TaskLinkageRequest
 import os
 
 def write_runtime_into_csv(listRunTime: list):

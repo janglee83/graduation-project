@@ -8,14 +8,14 @@ def write_runtime_into_csv(listRunTime: list):
     function_runtimes = [(i + 1, runtime)
                          for i, runtime in enumerate(listRunTime)]
     df = pandas.DataFrame(function_runtimes, columns=['id', 'runtime'])
-    df.to_csv('results/large/runtime.csv', index=False)
+    df.to_csv('results/medium/runtime.csv', index=False)
 
 
 def write_best_fitness_into_csv(listBestFitness: list):
     function_runtimes = [(i + 1, runtime)
                          for i, runtime in enumerate(listBestFitness)]
     df = pandas.DataFrame(function_runtimes, columns=['id', 'best_fitness'])
-    df.to_csv('results/large/fitness.csv', index=False)
+    df.to_csv('results/medium/fitness.csv', index=False)
 
 
 def write_fitness_into_csv(listFitness: list):
@@ -25,7 +25,7 @@ def write_fitness_into_csv(listFitness: list):
                             for i, runtime in enumerate(sorted_fitness)]
 
         df = pandas.DataFrame(function_runtimes, columns=['id', 'fitness'])
-        file_path = 'results/large/fitness_ev.csv'
+        file_path = 'results/medium/fitness_ev.csv'
 
         if os.path.exists(file_path):
             # If file exists, find the next available filename with an incremented index
@@ -54,10 +54,10 @@ def write_solution_into_csv(solution: torch.Tensor, list_task_linkage_global: li
 
     df = pandas.DataFrame(data, columns=column_names)
 
-    df.to_csv('results/large/solution.csv', index=False)
+    df.to_csv('results/medium/solution.csv', index=False)
 
 if __name__ == "__main__":
-    time_repeat_func = 5
+    time_repeat_func = 3
 
     list_runtime = list()
     tensor_best_weight = []
